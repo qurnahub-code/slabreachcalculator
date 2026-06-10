@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who Uses SLA Breach Calculators? | SLABreachCalculator.site</title>
+<meta name="description" content="Discover how IT managers, procurement teams, and operations directors use SLA breach calculators to enforce contracts.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://slabreachcalculator.site/about">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slabreachcalculator.site/about">
+<meta property="og:title" content="Who Uses SLA Breach Calculators?">
+<meta property="og:description" content="Discover how IT managers, procurement teams, and operations directors use SLA breach calculators to enforce contracts.">
+<meta property="og:site_name" content="SLABreachCalculator.site">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy-950: #060d1b; --navy-800: #0f1f3d; --navy-700: #162952;
+  --blue-500: #2563EB; --blue-400: #3B82F6; --blue-300: #60A5FA;
+  --green-600:#16A34A;
+  --slate-900:#0F172A; --slate-700:#334155; --slate-600:#475569;
+  --slate-500:#64748B; --slate-400:#94A3B8; --slate-300:#CBD5E1;
+  --slate-200:#E2E8F0; --white:#FFFFFF;
+  --bg: var(--navy-950); --border: rgba(255,255,255,0.08); --border-2: rgba(255,255,255,0.14);
+  --text: #E2E8F0; --mono: 'IBM Plex Mono', monospace; --sans: 'Inter', sans-serif;
+  --radius: 10px; --radius-lg: 16px; --radius-xl: 24px;
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.6); --glow-blue: 0 0 40px rgba(59,130,246,0.12);
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+.bg-grid { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+.bg-orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; animation: orbFloat 12s ease-in-out infinite; }
+.bg-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%); top: -150px; left: -100px; }
+.bg-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%); bottom: -100px; right: -80px; animation-delay: -6s; }
+@keyframes orbFloat { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(20px,-20px); } }
+.page-wrap { position: relative; z-index: 1; }
+header { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(6,13,27,0.85); border-bottom: 1px solid var(--border); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--white); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.logo-icon { width: 28px; height: 28px; background: linear-gradient(135deg, var(--blue-500), var(--blue-400)); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; box-shadow: 0 0 14px rgba(59,130,246,0.4); }
+.logo span { color: var(--blue-300); }
+.nav-links { display: flex; gap: 6px; }
+.nav-link { font-size: 13px; color: var(--slate-400); text-decoration: none; padding: 6px 12px; border-radius: var(--radius); transition: all 0.15s; }
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+.nav-link.active { color: var(--blue-300); background: rgba(59,130,246,0.08); }
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.hero { padding: 72px 24px 80px; text-align: center; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-300); background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; }
+h1.page-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+h1.page-title span { background: linear-gradient(135deg, var(--blue-300), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 16px; color: var(--slate-400); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+.content-card { background: rgba(15,25,61,0.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-2); border-radius: var(--radius-xl); padding: 40px 48px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.content-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--blue-400), transparent); }
+@media (max-width: 600px) { .content-card { padding: 28px 24px; } }
+h2.section-h { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 14px; letter-spacing: -0.02em; }
+h2.section-h span { color: var(--blue-300); }
+p.body-text { font-size: 15px; color: var(--slate-400); line-height: 1.75; margin-bottom: 14px; }
+p.body-text:last-child { margin-bottom: 0; }
+p.body-text strong { color: var(--slate-200); font-weight: 600; }
+.values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+@media (max-width: 560px) { .values-grid { grid-template-columns: 1fr; } }
+.value-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; transition: all 0.2s; }
+.value-card:hover { border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.05); }
+.value-icon { font-size: 24px; margin-bottom: 10px; }
+.value-card h3 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.value-card p { font-size: 13px; color: var(--slate-400); line-height: 1.6; }
+.stat-row { display: flex; gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin: 24px 0; }
+.stat-cell { flex: 1; padding: 20px; text-align: center; border-right: 1px solid var(--border); }
+.stat-cell:last-child { border-right: none; }
+.stat-n { font-family: var(--mono); font-size: 26px; font-weight: 600; color: var(--white); }
+.stat-l { font-size: 12px; color: var(--slate-500); margin-top: 4px; letter-spacing: 0.05em; }
+@media (max-width: 480px) { .stat-row { flex-direction: column; } .stat-cell { border-right: none; border-bottom: 1px solid var(--border); } .stat-cell:last-child { border-bottom: none; } }
+.cta-card { background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(59,130,246,0.08)); border: 1px solid rgba(59,130,246,0.3); border-radius: var(--radius-xl); padding: 36px 40px; text-align: center; margin: 24px 0 60px; }
+.cta-card h2 { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 10px; letter-spacing: -0.02em; }
+.cta-card p { font-size: 15px; color: var(--slate-400); margin-bottom: 24px; }
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--blue-500), var(--blue-400)); color: #fff; text-decoration: none; border-radius: var(--radius); padding: 14px 28px; font-size: 15px; font-weight: 700; transition: all 0.2s; box-shadow: 0 4px 20px rgba(37,99,235,0.4); }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,99,235,0.5); }
+footer { border-top: 1px solid var(--border); background: rgba(6,13,27,0.8); backdrop-filter: blur(20px); padding: 28px 24px; text-align: center; }
+.footer-logo { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+.footer-logo span { color: var(--blue-300); }
+.footer-links { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--slate-400); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+.footer-links a:hover { color: var(--blue-300); }
+.footer-sep { color: var(--slate-700); }
+.footer-note { font-size: 12px; color: var(--slate-600); font-family: var(--mono); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": "https://slabreachcalculator.site/about",
+  "name": "About SLABreachCalculator.site",
+  "url": "https://slabreachcalculator.site/about",
+  "description": "About page for SLABreachCalculator.site — a free, privacy-first SLA breach penalty calculator.",
+  "isPartOf": { "@type": "WebSite", "url": "https://slabreachcalculator.site", "name": "SLABreachCalculator.site" }
+}
+</script>
+</head>
+<body>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+<div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+<div class="page-wrap">
+
+<header role="banner">
+  <a href="/" class="logo" aria-label="SLABreachCalculator.site Home">
+    <div class="logo-icon" aria-hidden="true">⚡</div>
+    SLABreach<span>Calculator</span>.site
+  </a>
+  <nav class="nav-links" aria-label="Site navigation">
+    <a href="/" class="nav-link">Calculator</a>
+    <a href="/about/" class="nav-link active">About</a>
+    <a href="/privacy/" class="nav-link">Privacy</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" aria-labelledby="page-heading">
+  <div class="hero-eyebrow">Guide</div>
+  <h1 id="page-heading" class="page-title">Who Uses SLA Breach Calculators?</h1>
+  <p class="hero-sub">Discover how IT managers, procurement teams, and operations directors use SLA breach calculators to enforce contracts.</p>
+</section>
+
+<div class="container">
+<!-- ══ USE CASES ══ -->
+  <section class="use-cases reveal" aria-labelledby="who-uses-sla-breach-calculators">
+    <div class="section-eyebrow">Who Uses This</div>
+    <h2 id="who-uses-sla-breach-calculators" class="section-title">Built for IT & Operations Professionals</h2>
+    <div class="use-case-grid">
+      <div class="use-case">
+        <div class="use-case-icon" aria-hidden="true">🖥️</div>
+        <div>
+          <h3 class="use-case-h">IT Managers</h3>
+          <p>Track cloud and hosting vendor SLA compliance. Document breaches for service credit claims or contract renegotiations.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon" aria-hidden="true">📋</div>
+        <div>
+          <h3 class="use-case-h">Procurement Officers</h3>
+          <p>Audit supplier performance and enforce contractual penalties. Keep vendors accountable across multiple agreements.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon" aria-hidden="true">⚙️</div>
+        <div>
+          <h3 class="use-case-h">Operations Directors</h3>
+          <p>Calculate delivery penalty exposure in logistics and services contracts. Flag breaches before invoicing cycles.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-icon" aria-hidden="true">🚀</div>
+        <div>
+          <h3 class="use-case-h">Startup CTOs</h3>
+          <p>Understand your own exposure when you're the vendor. Know what you owe customers before they send a claim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer role="contentinfo">
+  <div class="footer-logo">SLABreach<span>Calculator</span>.site</div>
+  <div class="footer-links">
+    <a href="/">Calculator</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/about/">About</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/privacy/">Privacy</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/contact/">Contact</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/terms/">Terms</a>
+  </div>
+  <p class="footer-note">Free SLA Breach Calculator — Not legal advice · Results are estimates · Always verify against your contract</p>
+</footer>
+</div>
+</body>
+</html>

@@ -1377,8 +1377,8 @@ footer {
     SLABreach<span>Calculator</span>.site
   </a>
   <nav class="nav-right" aria-label="Site navigation">
-    <a href="/about.html" style="font-size:13px;color:var(--slate-400);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .15s;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.color='';this.style.background=''">About</a>
-    <a href="/contact.html" style="font-size:13px;color:var(--slate-400);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .15s;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.color='';this.style.background=''">Contact</a>
+    <a href="/about/" style="font-size:13px;color:var(--slate-400);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .15s;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.color='';this.style.background=''">About</a>
+    <a href="/contact/" style="font-size:13px;color:var(--slate-400);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .15s;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.color='';this.style.background=''">Contact</a>
     <div class="nav-badge green">🟢 Free Tool</div>
     <div class="nav-badge">No Signup</div>
   </nav>
@@ -1676,129 +1676,11 @@ footer {
     </div>
   </div>
 
-  <!-- ══ HOW IT WORKS ══ -->
-  <section class="section reveal" aria-labelledby="how-to-calculate-sla-breach-penalties">
-    <div class="section-eyebrow">How It Works</div>
-    <h2 id="how-to-calculate-sla-breach-penalties" class="section-title">How SLA Breach Calculations Work</h2>
-    <p class="section-sub">
-      Service Level Agreements define contractual minimums. When a vendor misses them, a formula in your contract determines what's owed. Most teams calculate this manually — inconsistently, and often wrong.
-    </p>
-    <div class="how-grid">
-      <div class="how-card">
-        <div class="how-num">Step 01</div>
-        <h3>Identify the Shortfall</h3>
-        <p>Compare actual performance against the contracted SLA target — uptime percentage, response hours, or delivery date. Even a small shortfall can trigger penalties.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">Step 02</div>
-        <h3>Apply the Penalty Formula</h3>
-        <p>Your contract specifies a penalty rate: a percentage of monthly fees, a flat rate per incident, or a sliding scale based on breach severity.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">Step 03</div>
-        <h3>Check the Cap</h3>
-        <p>Most contracts include a maximum credit cap — often 30% of monthly fees. This calculator applies your cap automatically so you don't overclaim.</p>
-      </div>
-    </div>
-  </section>
+  
 
-  <!-- ══ USE CASES ══ -->
-  <section class="use-cases reveal" aria-labelledby="who-uses-sla-breach-calculators">
-    <div class="section-eyebrow">Who Uses This</div>
-    <h2 id="who-uses-sla-breach-calculators" class="section-title">Built for IT & Operations Professionals</h2>
-    <div class="use-case-grid">
-      <div class="use-case">
-        <div class="use-case-icon" aria-hidden="true">🖥️</div>
-        <div>
-          <h3 class="use-case-h">IT Managers</h3>
-          <p>Track cloud and hosting vendor SLA compliance. Document breaches for service credit claims or contract renegotiations.</p>
-        </div>
-      </div>
-      <div class="use-case">
-        <div class="use-case-icon" aria-hidden="true">📋</div>
-        <div>
-          <h3 class="use-case-h">Procurement Officers</h3>
-          <p>Audit supplier performance and enforce contractual penalties. Keep vendors accountable across multiple agreements.</p>
-        </div>
-      </div>
-      <div class="use-case">
-        <div class="use-case-icon" aria-hidden="true">⚙️</div>
-        <div>
-          <h3 class="use-case-h">Operations Directors</h3>
-          <p>Calculate delivery penalty exposure in logistics and services contracts. Flag breaches before invoicing cycles.</p>
-        </div>
-      </div>
-      <div class="use-case">
-        <div class="use-case-icon" aria-hidden="true">🚀</div>
-        <div>
-          <h3 class="use-case-h">Startup CTOs</h3>
-          <p>Understand your own exposure when you're the vendor. Know what you owe customers before they send a claim.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
-  <!-- ══ FAQ ══ -->
-  <section class="section faq reveal" aria-labelledby="frequently-asked-questions-about-sla-breaches">
-    <div class="section-eyebrow">FAQ</div>
-    <h2 id="frequently-asked-questions-about-sla-breaches" class="section-title">Frequently Asked <span>Questions</span></h2>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleFaq(this)" aria-expanded="false">
-        What is an SLA breach?
-        <span class="faq-icon" aria-hidden="true"></span>
-      </div>
-      <div class="faq-a">An SLA breach occurs when a service provider fails to meet the performance levels guaranteed in a Service Level Agreement. Common examples include a cloud host falling below a contracted 99.9% uptime, a support desk exceeding its response time target, or a software vendor missing a delivery milestone. Once a breach is confirmed, the contract typically entitles the affected party to a financial remedy — a service credit or direct penalty payment.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleFaq(this)" aria-expanded="false">
-        How is an uptime SLA penalty calculated?
-        <span class="faq-icon" aria-hidden="true"></span>
-      </div>
-      <div class="faq-a">The formula is: <strong>(Contracted Uptime % − Actual Uptime %) × Total Hours in Period = Downtime Overage Hours.</strong> Those excess downtime hours are then multiplied by a penalty rate set in your contract — either a flat dollar amount per hour, or a percentage of that month's invoice. Most contracts cap the total credit at 10–30% of the monthly fee regardless of how severe the breach was.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleFaq(this)" aria-expanded="false">
-        What is a tiered SLA penalty structure?
-        <span class="faq-icon" aria-hidden="true"></span>
-      </div>
-      <div class="faq-a">A tiered structure escalates the penalty rate based on how far below the SLA target performance falls. For example: 99.5–99.9% actual uptime might earn a 10% service credit; 99.0–99.5% earns 20%; anything below 99.0% earns 30%. This is the most common structure in enterprise cloud and managed service contracts. Our calculator's "Tiered (standard SLA)" option uses this widely-adopted structure as a baseline.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleFaq(this)" aria-expanded="false">
-        Are service credits the same as cash penalties?
-        <span class="faq-icon" aria-hidden="true"></span>
-      </div>
-      <div class="faq-a">Not always. Most commercial contracts award service credits — a reduction in future invoices — rather than cash refunds. However, some contracts (particularly government procurement and large enterprise agreements) require direct financial payment. The distinction matters legally. This calculator computes the monetary value of the entitlement; check your contract to confirm whether it's a credit or a payment obligation.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleFaq(this)" aria-expanded="false">
-        Can I use this calculator as evidence in a dispute?
-        <span class="faq-icon" aria-hidden="true"></span>
-      </div>
-      <div class="faq-a">This tool is designed to help you understand your entitlement and prepare for a formal claim or negotiation. It is not a substitute for legal advice. We recommend using the output as a working document that you verify against the specific penalty language in your contract before submitting a formal claim. For high-value disputes, involve your legal or procurement team.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleFaq(this)" aria-expanded="false">
-        What's the typical SLA credit cap?
-        <span class="faq-icon" aria-hidden="true"></span>
-      </div>
-      <div class="faq-a">Industry standard is 10–30% of the monthly contract value, regardless of how large the actual shortfall was. AWS, Google Cloud, and Microsoft Azure all cap SLA credits at around 10–30% of monthly spend. Some managed service providers offer higher caps in their enterprise agreements. If your contract doesn't specify a cap, you may have grounds to claim the full calculated amount — a situation where consulting a lawyer is recommended.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleFaq(this)" aria-expanded="false">
-        Does this calculator work for ITIL or ISO 20000 SLAs?
-        <span class="faq-icon" aria-hidden="true"></span>
-      </div>
-      <div class="faq-a">Yes. While the penalty structures vary, the underlying math — comparing actual vs. contracted performance and applying a rate to the shortfall — applies universally across ITIL-aligned service management, ISO/IEC 20000-compliant agreements, and standard commercial IT contracts. Input the specific targets and rates from your agreement to get accurate results.</div>
-    </div>
-  </section>
+  
 
 </div><!-- /container -->
 
@@ -1808,17 +1690,17 @@ footer {
   <div class="footer-links">
     <a href="#calculator">Calculator</a>
     <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="#how-to-calculate-sla-breach-penalties">How It Works</a>
+    <a href="/how-to-calculate-sla-breach-penalties/">How It Works</a>
     <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="#frequently-asked-questions-about-sla-breaches">FAQ</a>
+    <a href="/frequently-asked-questions-about-sla-breaches/">FAQ</a>
     <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="/about.html">About</a>
+    <a href="/about/">About</a>
     <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="/privacy.html">Privacy</a>
+    <a href="/privacy/">Privacy</a>
     <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="/terms.html">Terms</a>
+    <a href="/terms/">Terms</a>
     <span class="footer-sep" aria-hidden="true">·</span>
-    <a href="/contact.html">Contact</a>
+    <a href="/contact/">Contact</a>
   </div>
   <p class="footer-note">Free SLA Breach Calculator — Not legal advice · Results are estimates based on your inputs · Always verify against your contract language</p>
 </footer>
