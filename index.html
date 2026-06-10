@@ -1358,6 +1358,11 @@ footer {
 ::-webkit-scrollbar-track { background: var(--navy-950); }
 ::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.3); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(59,130,246,0.5); }
+
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.nav-link { font-size: 13px; color: var(--slate-400); text-decoration: none; padding: 6px 12px; border-radius: var(--radius); transition: all 0.15s; }
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+.nav-link.active { color: var(--blue-300); background: rgba(59,130,246,0.08); }
 </style>
 </head>
 <body>
@@ -1371,16 +1376,18 @@ footer {
 <div class="page-wrap">
 
 <!-- ══ HEADER ══ -->
-<header role="banner">
+<header role="banner" style="flex-wrap: wrap;">
   <a href="/" class="logo" aria-label="SLABreachCalculator.site Home">
     <div class="logo-icon" aria-hidden="true">⚡</div>
     SLABreach<span>Calculator</span>.site
   </a>
-  <nav class="nav-right" aria-label="Site navigation">
-    <a href="/about/" style="font-size:13px;color:var(--slate-400);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .15s;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.color='';this.style.background=''">About</a>
-    <a href="/contact/" style="font-size:13px;color:var(--slate-400);text-decoration:none;padding:6px 10px;border-radius:8px;transition:all .15s;" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.color='';this.style.background=''">Contact</a>
-    <div class="nav-badge green">🟢 Free Tool</div>
-    <div class="nav-badge">No Signup</div>
+  <nav class="nav-links" aria-label="Site navigation" style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end;">
+    <a href="/" class="nav-link active">Calculator</a>
+    <a href="/how-to-calculate-sla-breach-penalties/" class="nav-link">How It Works</a>
+    <a href="/who-uses-sla-breach-calculators/" class="nav-link">Use Cases</a>
+    <a href="/frequently-asked-questions-about-sla-breaches/" class="nav-link">FAQ</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
   </nav>
 </header>
 
@@ -1699,9 +1706,11 @@ footer {
 <footer role="contentinfo">
   <div class="footer-logo">SLABreach<span>Calculator</span>.site</div>
   <div class="footer-links">
-    <a href="#calculator">Calculator</a>
+    <a href="/">Calculator</a>
     <span class="footer-sep" aria-hidden="true">·</span>
     <a href="/how-to-calculate-sla-breach-penalties/">How It Works</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/who-uses-sla-breach-calculators/">Use Cases</a>
     <span class="footer-sep" aria-hidden="true">·</span>
     <a href="/frequently-asked-questions-about-sla-breaches/">FAQ</a>
     <span class="footer-sep" aria-hidden="true">·</span>
