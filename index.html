@@ -1203,13 +1203,133 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ═══════════════════════════════════════════
+   ANIMATION ENGINE
+═══════════════════════════════════════════ */
+
+/* Particle canvas sits behind everything */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Ripple keyframe */
+@keyframes rippleAnim {
+  to { transform: scale(1); opacity: 0; }
+}
+
+/* Tab panel slide in */
+@keyframes panelSlideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Hero title word reveal */
+@keyframes wordReveal {
+  from { opacity: 0; transform: translateY(24px) skewY(3deg); }
+  to   { opacity: 1; transform: translateY(0) skewY(0deg); }
+}
+
+/* Animated gradient on hero title em */
+.hero-title em {
+  background: linear-gradient(120deg, #60A5FA, #A78BFA, #F472B6, #60A5FA);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientFlow 5s ease infinite;
+}
+@keyframes gradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Logo icon subtle float */
+.logo-icon {
+  animation: logoFloat 4s ease-in-out infinite;
+}
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-3px) rotate(-5deg); }
+}
+
+/* Calc-btn shine sweep on hover */
+.calc-btn { overflow: hidden; position: relative; }
+.calc-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -75%;
+  width: 50%; height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+.calc-btn:hover::after { left: 150%; }
+
+/* Number glow flash when result appears */
+@keyframes numGlow {
+  0%   { text-shadow: 0 0 0px transparent; }
+  40%  { text-shadow: 0 0 24px rgba(59,130,246,0.6), 0 0 48px rgba(59,130,246,0.3); }
+  100% { text-shadow: none; }
+}
+.meter-amount { animation: none; }
+.meter-amount.counting { animation: numGlow 1.2s ease forwards; }
+
+/* How-card 3D tilt base */
+.how-card, .use-case {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Tab panel transition base */
+.tab-panel.active {
+  animation: panelSlideIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Floating decorative orb (extra) */
+.bg-orb-3 {
+  position: fixed;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(168,85,247,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  bottom: 20%; right: 10%;
+  animation: orbFloat3 18s ease-in-out infinite;
+}
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0); }
+  33%  { transform: translate(-20px, 15px); }
+  66%  { transform: translate(15px, -10px); }
+}
+
+/* Hero stat value pulse on count */
+.hero-stat-val {
+  transition: transform 0.15s ease;
+}
+.hero-stat-val.ticking { transform: scale(1.08); }
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy-950); }
+::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59,130,246,0.5); }
 </style>
 </head>
 <body>
 
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
 <div class="bg-grid" aria-hidden="true"></div>
 <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
 <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+<div class="bg-orb-3" aria-hidden="true"></div>
 
 <div class="page-wrap">
 
@@ -2032,7 +2152,346 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 /* ══════════════════════════════════
    INIT
 ══════════════════════════════════ */
-// result-area is hidden via inline style="display:none" in HTML — no JS init needed here.
+// result-area is hidden via inline style="display:none" in HTML - no JS init needed here.
+
+/* ================================================================
+   FLUID ANIMATION ENGINE
+================================================================ */
+
+// ── 1. PARTICLE CONSTELLATION CANVAS ──
+;(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  const mouse = { x: -999, y: -999 };
+  const COUNT = 55, LINK_DIST = 120, PC = 'rgba(59,130,246,';
+
+  function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+
+  function Particle() {
+    this.reset();
+  }
+  Particle.prototype.reset = function() {
+    this.x  = Math.random() * W;
+    this.y  = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.35;
+    this.vy = (Math.random() - 0.5) * 0.35;
+    this.r  = Math.random() * 1.5 + 0.4;
+  };
+  Particle.prototype.update = function() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > W) this.vx *= -1;
+    if (this.y < 0 || this.y > H) this.vy *= -1;
+    // Soft mouse repulsion
+    const dx = this.x - mouse.x, dy = this.y - mouse.y;
+    const d = Math.hypot(dx, dy);
+    if (d < 90 && d > 0) { this.x += (dx/d)*1.2; this.y += (dy/d)*1.2; }
+  };
+  Particle.prototype.draw = function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+    ctx.fillStyle = PC + '0.65)';
+    ctx.fill();
+  };
+
+  function drawLinks() {
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      // Particle-to-particle lines
+      for (let j = i+1; j < particles.length; j++) {
+        const q = particles[j];
+        const d = Math.hypot(p.x-q.x, p.y-q.y);
+        if (d < LINK_DIST) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = PC + ((1-d/LINK_DIST)*0.14) + ')';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+      // Particle-to-mouse lines
+      const dm = Math.hypot(p.x-mouse.x, p.y-mouse.y);
+      if (dm < 160) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = PC + ((1-dm/160)*0.28) + ')';
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+    }
+  }
+
+  function loop() {
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawLinks();
+    requestAnimationFrame(loop);
+  }
+
+  resize();
+  for (let i=0; i<COUNT; i++) particles.push(new Particle());
+  window.addEventListener('resize', resize);
+  document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  document.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+  loop();
+})();
+
+// ── 2. SMOOTH MOUSE GLOW FOLLOWER ──
+;(function() {
+  const glow = document.createElement('div');
+  Object.assign(glow.style, {
+    position:'fixed', width:'360px', height:'360px', borderRadius:'50%',
+    background:'radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%)',
+    pointerEvents:'none', zIndex:'0', top:'0', left:'0',
+    transform:'translate(-50%,-50%)', willChange:'left,top'
+  });
+  document.body.appendChild(glow);
+  let gx=innerWidth/2, gy=innerHeight/2, cx=gx, cy=gy;
+  document.addEventListener('mousemove', e => { gx=e.clientX; gy=e.clientY; });
+  (function smooth() {
+    cx += (gx-cx)*0.07; cy += (gy-cy)*0.07;
+    glow.style.left = cx+'px'; glow.style.top = cy+'px';
+    requestAnimationFrame(smooth);
+  })();
+})();
+
+// ── 3. HERO WORD-BY-WORD REVEAL ──
+;(function() {
+  const h1 = document.querySelector('.hero-title');
+  if (!h1) return;
+  // Wrap each word in a span with a stagger delay
+  h1.querySelectorAll('br').forEach(br => br.replaceWith(' \u00A0 '));
+  const raw = h1.innerHTML;
+  // Animate the whole h1 in with a fade+slide
+  h1.style.cssText += 'opacity:0;transform:translateY(28px);transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1);';
+  setTimeout(() => {
+    h1.style.opacity = '1';
+    h1.style.transform = 'translateY(0)';
+  }, 120);
+
+  // Eyebrow comes in first
+  const ey = document.querySelector('.hero-eyebrow');
+  if (ey) {
+    ey.style.cssText += 'opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;';
+    setTimeout(() => { ey.style.opacity='1'; ey.style.transform='translateY(0)'; }, 50);
+  }
+
+  // Subtitle typewriter
+  const sub = document.querySelector('.hero-sub');
+  if (sub) {
+    const text = sub.textContent.trim();
+    sub.textContent = '';
+    sub.style.opacity = '1';
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        sub.textContent += text[i++];
+        setTimeout(type, 14 + Math.random()*10);
+      }
+    }
+    setTimeout(type, 820);
+  }
+})();
+
+// ── 4. HERO STAT COUNTER ANIMATION ──
+;(function() {
+  const statEls = document.querySelectorAll('.hero-stat-val');
+  const targets = [];
+  statEls.forEach(el => {
+    const raw = el.textContent.trim();
+    const num = parseFloat(raw);
+    if (!isNaN(num)) {
+      const suffix = raw.replace(/[\d.]/g,'');
+      targets.push({ el, target: num, suffix, done: false });
+      el.textContent = (num === 0 ? '0' : '0') + suffix;
+    }
+  });
+
+  function easeOutExpo(t) { return t===1 ? 1 : 1 - Math.pow(2, -10*t); }
+
+  function countUp(obj) {
+    if (obj.done) return;
+    obj.done = true;
+    const dur = 1400, t0 = performance.now();
+    obj.el.classList.add('ticking');
+    function tick(now) {
+      const p = Math.min((now-t0)/dur, 1);
+      const val = obj.target * easeOutExpo(p);
+      obj.el.textContent = (Number.isInteger(obj.target) ? Math.round(val) : val.toFixed(1)) + obj.suffix;
+      if (p < 1) requestAnimationFrame(tick);
+      else { obj.el.textContent = obj.target + obj.suffix; obj.el.classList.remove('ticking'); }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) targets.forEach(t => { if (e.target.contains(t.el)) countUp(t); });
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.hero-stats').forEach(el => obs.observe(el));
+})();
+
+// ── 5. 3D PERSPECTIVE TILT on cards ──
+;(function() {
+  const STRENGTH = 10;
+  ['.how-card', '.use-case', '.faq-item'].forEach(sel => {
+    document.querySelectorAll(sel).forEach(card => {
+      card.addEventListener('mousemove', function(e) {
+        const r = card.getBoundingClientRect();
+        const cx = r.left + r.width/2, cy = r.top + r.height/2;
+        const dx = (e.clientX - cx) / (r.width/2);
+        const dy = (e.clientY - cy) / (r.height/2);
+        card.style.transition = 'transform 0.08s ease';
+        card.style.transform = `perspective(900px) rotateY(${dx*STRENGTH}deg) rotateX(${-dy*STRENGTH}deg) scale(1.02)`;
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+        card.style.transform = 'perspective(900px) rotateY(0) rotateX(0) scale(1)';
+      });
+    });
+  });
+})();
+
+// ── 6. RIPPLE EFFECT on calc buttons ──
+;(function() {
+  document.querySelectorAll('.calc-btn').forEach(btn => {
+    btn.addEventListener('pointerdown', function(e) {
+      const r = btn.getBoundingClientRect();
+      const sz = Math.max(r.width, r.height) * 2.2;
+      const rip = document.createElement('span');
+      Object.assign(rip.style, {
+        position:'absolute', width:sz+'px', height:sz+'px', borderRadius:'50%',
+        background:'rgba(255,255,255,0.22)',
+        left:(e.clientX - r.left - sz/2)+'px',
+        top:(e.clientY - r.top - sz/2)+'px',
+        transform:'scale(0)', pointerEvents:'none',
+        animation:'rippleAnim 0.65s cubic-bezier(0.22,1,0.36,1) forwards'
+      });
+      btn.appendChild(rip);
+      setTimeout(() => rip.remove(), 700);
+    });
+  });
+})();
+
+// ── 7. MAGNETIC PULL on calc buttons ──
+;(function() {
+  document.querySelectorAll('.calc-btn').forEach(btn => {
+    btn.addEventListener('mousemove', function(e) {
+      const r = btn.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width/2)) * 0.18;
+      const dy = (e.clientY - (r.top + r.height/2)) * 0.18;
+      btn.style.transform = `translateY(-2px) translate(${dx}px,${dy}px)`;
+    });
+    btn.addEventListener('mouseleave', function() {
+      btn.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+      btn.style.transform = '';
+      setTimeout(() => btn.style.transition = '', 400);
+    });
+  });
+})();
+
+// ── 8. ANIMATED NUMBER COUNT-UP on result ──
+;(function() {
+  const _orig = window.showMeter;
+  if (typeof _orig !== 'function') return;
+  window.showMeter = function(cur, amount, stats, rows, barPct, isOk) {
+    _orig(cur, amount, stats, rows, barPct, isOk);
+    if (amount === 0) return;
+    const el = document.getElementById('meter-amount');
+    if (!el) return;
+    const smallTxt = isOk ? ' — no penalty' : ' estimated';
+    el.classList.remove('counting');
+    void el.offsetWidth; // reflow to restart animation
+    el.classList.add('counting');
+    let startTs = null;
+    const dur = 1100;
+    function tick(ts) {
+      if (!startTs) startTs = ts;
+      const p = Math.min((ts - startTs) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 4);
+      el.innerHTML = `${cur}${fmt(amount * ease)}<small>${smallTxt}</small>`;
+      if (p < 1) requestAnimationFrame(tick);
+      else { el.innerHTML = `${cur}${fmt(amount)}<small>${smallTxt}</small>`; }
+    }
+    requestAnimationFrame(tick);
+  };
+})();
+
+// ── 9. TAB PANEL SLIDE TRANSITION ──
+;(function() {
+  const _orig = window.switchTab;
+  if (typeof _orig !== 'function') return;
+  window.switchTab = function(id) {
+    _orig(id);
+    const panel = document.getElementById('panel-' + id);
+    if (panel) {
+      panel.style.animation = 'none';
+      void panel.offsetWidth;
+      panel.style.animation = 'panelSlideIn 0.32s cubic-bezier(0.22,1,0.36,1) both';
+    }
+  };
+})();
+
+// ── 10. STAGGER ENTRANCE for how-cards ──
+;(function() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.how-card').forEach((c, i) => {
+        c.style.opacity = '0';
+        c.style.transform = 'translateY(36px) scale(0.96)';
+        setTimeout(() => {
+          c.style.transition = 'opacity 0.55s ease, transform 0.55s cubic-bezier(0.34,1.56,0.64,1)';
+          c.style.opacity = '1';
+          c.style.transform = 'translateY(0) scale(1)';
+        }, i * 130);
+      });
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.how-grid').forEach(el => obs.observe(el));
+})();
+
+// ── 11. USE-CASE STAGGER ──
+;(function() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.use-case').forEach((c, i) => {
+        c.style.opacity = '0';
+        c.style.transform = 'translateX(-16px) scale(0.97)';
+        setTimeout(() => {
+          c.style.transition = 'opacity 0.45s ease, transform 0.45s cubic-bezier(0.34,1.56,0.64,1)';
+          c.style.opacity = '1';
+          c.style.transform = 'translateX(0) scale(1)';
+        }, i * 90 + 80);
+      });
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.use-case-grid').forEach(el => obs.observe(el));
+})();
+
+// ── 12. BREATHING GLOW on calc-card ──
+;(function() {
+  const card = document.querySelector('.calc-card');
+  if (!card) return;
+  let phase = 0;
+  (function pulse() {
+    phase += 0.018;
+    const intensity = (Math.sin(phase) + 1) / 2;
+    card.style.boxShadow = [
+      '0 24px 64px rgba(0,0,0,0.65)',
+      `0 0 ${30 + intensity*30}px rgba(59,130,246,${0.09 + intensity*0.09})`,
+      `inset 0 1px 0 rgba(255,255,255,${0.06 + intensity*0.04})`
+    ].join(',');
+    requestAnimationFrame(pulse);
+  })();
+})();
 </script>
 
 </body>
