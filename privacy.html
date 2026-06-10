@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — SLABreachCalculator.site</title>
+<meta name="description" content="Privacy Policy for SLABreachCalculator.site. We collect no personal data. All SLA calculations run entirely in your browser — nothing is sent to our servers.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://slabreachcalculator.site/privacy">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slabreachcalculator.site/privacy">
+<meta property="og:title" content="Privacy Policy — SLABreachCalculator.site">
+<meta property="og:site_name" content="SLABreachCalculator.site">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy-950: #060d1b; --navy-800: #0f1f3d;
+  --blue-500: #2563EB; --blue-400: #3B82F6; --blue-300: #60A5FA;
+  --green-600:#16A34A; --green-400:#4ADE80;
+  --slate-500:#64748B; --slate-400:#94A3B8; --slate-300:#CBD5E1; --slate-200:#E2E8F0;
+  --white:#FFFFFF;
+  --bg: var(--navy-950); --border: rgba(255,255,255,0.08); --border-2: rgba(255,255,255,0.14);
+  --text: #E2E8F0; --mono: 'IBM Plex Mono', monospace; --sans: 'Inter', sans-serif;
+  --radius: 10px; --radius-lg: 16px; --radius-xl: 24px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+.bg-grid { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+.bg-orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; animation: orbFloat 12s ease-in-out infinite; }
+.bg-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%); top: -150px; left: -100px; }
+.bg-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(22,163,74,0.07) 0%, transparent 70%); bottom: -100px; right: -80px; animation-delay: -6s; }
+@keyframes orbFloat { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(20px,-20px); } }
+.page-wrap { position: relative; z-index: 1; }
+header { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(6,13,27,0.85); border-bottom: 1px solid var(--border); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--white); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.logo-icon { width: 28px; height: 28px; background: linear-gradient(135deg, var(--blue-500), var(--blue-400)); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; box-shadow: 0 0 14px rgba(59,130,246,0.4); }
+.logo span { color: var(--blue-300); }
+.nav-links { display: flex; gap: 6px; }
+.nav-link { font-size: 13px; color: var(--slate-400); text-decoration: none; padding: 6px 12px; border-radius: var(--radius); transition: all 0.15s; }
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+.nav-link.active { color: var(--blue-300); background: rgba(59,130,246,0.08); }
+.container { max-width: 760px; margin: 0 auto; padding: 0 24px 60px; }
+.hero { padding: 64px 24px 72px; text-align: center; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-400); background: rgba(22,163,74,0.08); border: 1px solid rgba(22,163,74,0.25); padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; }
+.hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--green-400); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.7); } }
+h1.page-title { font-size: clamp(26px, 4vw, 40px); font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+.hero-sub { font-size: 16px; color: var(--slate-400); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+.updated-badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 11px; color: var(--slate-500); border: 1px solid var(--border-2); padding: 5px 12px; border-radius: 20px; margin-top: 16px; }
+.privacy-toc { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 28px; }
+.privacy-toc h2 { font-size: 13px; font-weight: 600; color: var(--slate-400); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--mono); margin-bottom: 14px; }
+.privacy-toc ol { padding-left: 20px; }
+.privacy-toc li { font-size: 14px; color: var(--slate-400); padding: 4px 0; }
+.privacy-toc a { color: var(--blue-300); text-decoration: none; transition: color 0.15s; }
+.privacy-toc a:hover { color: var(--white); }
+.privacy-section { margin-bottom: 28px; background: rgba(15,25,61,0.4); backdrop-filter: blur(16px); border: 1px solid var(--border-2); border-radius: var(--radius-xl); padding: 32px 36px; position: relative; overflow: hidden; }
+.privacy-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(59,130,246,0.3), transparent); }
+@media (max-width: 600px) { .privacy-section { padding: 24px 20px; } }
+.section-num { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; color: var(--blue-400); text-transform: uppercase; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); display: inline-flex; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+h2.section-h { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 14px; letter-spacing: -0.02em; }
+p.body-text { font-size: 14px; color: var(--slate-400); line-height: 1.8; margin-bottom: 12px; }
+p.body-text:last-child { margin-bottom: 0; }
+p.body-text strong { color: var(--slate-200); font-weight: 600; }
+.highlight-box { background: rgba(22,163,74,0.07); border: 1px solid rgba(22,163,74,0.2); border-radius: var(--radius-lg); padding: 18px 20px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
+.highlight-box .hi { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.highlight-box p { font-size: 14px; color: var(--slate-300); line-height: 1.65; margin: 0; }
+.highlight-box strong { color: var(--green-400); }
+ul.policy-list { padding-left: 20px; margin: 12px 0; }
+ul.policy-list li { font-size: 14px; color: var(--slate-400); line-height: 1.75; padding: 3px 0; }
+footer { border-top: 1px solid var(--border); background: rgba(6,13,27,0.8); backdrop-filter: blur(20px); padding: 28px 24px; text-align: center; }
+.footer-logo { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+.footer-logo span { color: var(--blue-300); }
+.footer-links { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--slate-400); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+.footer-links a:hover { color: var(--blue-300); }
+.footer-sep { color: #334155; }
+.footer-note { font-size: 12px; color: var(--slate-600); font-family: var(--mono); }
+</style>
+</head>
+<body>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+<div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+<div class="page-wrap">
+
+<header role="banner">
+  <a href="/" class="logo" aria-label="SLABreachCalculator.site Home">
+    <div class="logo-icon" aria-hidden="true">⚡</div>
+    SLABreach<span>Calculator</span>.site
+  </a>
+  <nav class="nav-links" aria-label="Site navigation">
+    <a href="/" class="nav-link">Calculator</a>
+    <a href="/about.html" class="nav-link">About</a>
+    <a href="/privacy.html" class="nav-link active">Privacy</a>
+    <a href="/contact.html" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" aria-labelledby="page-heading">
+  <div class="hero-eyebrow">Privacy Policy</div>
+  <h1 id="page-heading" class="page-title">Your data stays on your device</h1>
+  <p class="hero-sub">We built this tool to be as private as possible. Here's exactly what that means.</p>
+  <div class="updated-badge">📅 Last updated: June 2026</div>
+</section>
+
+<div class="container">
+
+  <div class="privacy-toc" role="navigation" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">Information We Collect</a></li>
+      <li><a href="#s2">How Calculations Work</a></li>
+      <li><a href="#s3">Cookies &amp; Tracking</a></li>
+      <li><a href="#s4">Third-Party Services</a></li>
+      <li><a href="#s5">Children's Privacy</a></li>
+      <li><a href="#s6">Changes to This Policy</a></li>
+      <li><a href="#s7">Contact</a></li>
+    </ol>
+  </div>
+
+  <div class="privacy-section" id="s1">
+    <div class="section-num">Section 01</div>
+    <h2 class="section-h">Information We Collect</h2>
+    <div class="highlight-box">
+      <div class="hi">🔒</div>
+      <p><strong>Short answer: none.</strong> We do not collect, store, or transmit any personal information, calculation inputs, or results.</p>
+    </div>
+    <p class="body-text">SLABreachCalculator.site does not require you to create an account, provide an email address, or submit any form that sends data to a remote server. The calculator fields you fill in exist solely in your browser's memory and are discarded when you close or refresh the page.</p>
+  </div>
+
+  <div class="privacy-section" id="s2">
+    <div class="section-num">Section 02</div>
+    <h2 class="section-h">How Calculations Work</h2>
+    <p class="body-text">Every calculation performed on this site runs entirely client-side using JavaScript executing in your web browser. Specifically:</p>
+    <ul class="policy-list">
+      <li>Input values (uptime percentages, contract values, dates, penalty rates) are read from form fields in your browser.</li>
+      <li>All arithmetic is performed by JavaScript code loaded with the page.</li>
+      <li>Results are written back to the page DOM — also in your browser.</li>
+      <li><strong>No input data or results are sent over the network at any point.</strong></li>
+    </ul>
+    <p class="body-text">You can verify this independently by opening your browser's developer tools (F12), going to the Network tab, and observing that no outgoing requests carry your form data when you click "Calculate".</p>
+  </div>
+
+  <div class="privacy-section" id="s3">
+    <div class="section-num">Section 03</div>
+    <h2 class="section-h">Cookies &amp; Tracking</h2>
+    <p class="body-text">This site does not use:</p>
+    <ul class="policy-list">
+      <li>Advertising cookies or tracking pixels</li>
+      <li>Analytics cookies (e.g. Google Analytics, Hotjar)</li>
+      <li>Session cookies tied to user identity</li>
+      <li>Local Storage or IndexedDB persistence of your calculation inputs</li>
+    </ul>
+    <p class="body-text">Google Fonts are loaded from <code style="font-family:var(--mono);font-size:13px;color:var(--blue-300)">fonts.googleapis.com</code> to render the Inter and IBM Plex Mono typefaces. This request may log your IP address per Google's own privacy policy. If this concerns you, the site remains fully functional with system fonts if you block external font requests.</p>
+  </div>
+
+  <div class="privacy-section" id="s4">
+    <div class="section-num">Section 04</div>
+    <h2 class="section-h">Third-Party Services</h2>
+    <p class="body-text">We do not integrate any third-party advertising networks, analytics platforms, A/B testing tools, heatmap recorders, or CRM systems.</p>
+    <p class="body-text">The only external resource loaded is the Google Fonts stylesheet referenced above. No other third-party JavaScript is loaded on this page.</p>
+  </div>
+
+  <div class="privacy-section" id="s5">
+    <div class="section-num">Section 05</div>
+    <h2 class="section-h">Children's Privacy</h2>
+    <p class="body-text">This site is a professional business tool intended for adults working in IT management, procurement, and operations. It is not directed at children under the age of 13, and we do not knowingly collect any information from children.</p>
+  </div>
+
+  <div class="privacy-section" id="s6">
+    <div class="section-num">Section 06</div>
+    <h2 class="section-h">Changes to This Policy</h2>
+    <p class="body-text">If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page. Because we collect no personal data, no changes to this policy will affect the privacy of previously provided information (there is none to affect).</p>
+  </div>
+
+  <div class="privacy-section" id="s7">
+    <div class="section-num">Section 07</div>
+    <h2 class="section-h">Contact</h2>
+    <p class="body-text">If you have any questions about this privacy policy or concerns about the tool's operation, please reach out via our <a href="/contact.html" style="color:var(--blue-300);text-decoration:none;">contact page</a>.</p>
+  </div>
+
+</div>
+
+<footer role="contentinfo">
+  <div class="footer-logo">SLABreach<span>Calculator</span>.site</div>
+  <div class="footer-links">
+    <a href="/">Calculator</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/about.html">About</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/privacy.html">Privacy</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/contact.html">Contact</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p class="footer-note">Free SLA Breach Calculator — Not legal advice · Results are estimates · Always verify against your contract</p>
+</footer>
+</div>
+</body>
+</html>
