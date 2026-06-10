@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -478,13 +478,13 @@ h1.hero-title .highlight {
   background: linear-gradient(90deg, transparent, var(--blue-400), transparent);
 }
 
-/* ── TABS ── */
+/* -- TABS -- */
 .calc-tabs {
   display: flex;
-  background: rgba(255,255,255,0.02);
+  background: rgba(6,13,27,0.6);
   border-bottom: 1px solid var(--border);
-  padding: 0 8px;
-  gap: 2px;
+  padding: 0;
+  gap: 0;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -493,32 +493,45 @@ h1.hero-title .highlight {
 .calc-tab {
   flex: 1;
   min-width: 120px;
-  padding: 16px 14px;
+  padding: 18px 16px;
   font-size: 13px;
   font-weight: 600;
   font-family: var(--sans);
-  text-align: center;
   cursor: pointer;
   border: none;
   background: none;
   color: var(--slate-500);
-  transition: all 0.2s ease;
-  letter-spacing: 0.01em;
+  transition: color 0.2s ease, background 0.2s ease;
+  letter-spacing: 0.02em;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   white-space: nowrap;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
 }
+.calc-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 50%; right: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue-500), var(--blue-300));
+  border-radius: 2px 2px 0 0;
+  transition: left 0.3s cubic-bezier(0.22,1,0.36,1), right 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.calc-tab.active::after { left: 0; right: 0; }
 .calc-tab:hover:not(.active) {
   color: var(--slate-300);
-  background: rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.025);
 }
 .calc-tab.active {
   color: var(--blue-300);
-  border-bottom-color: var(--blue-400);
   background: rgba(59,130,246,0.06);
 }
-.calc-tab .tab-icon { margin-right: 6px; font-size: 14px; }
+.calc-tab .tab-icon { font-size: 15px; line-height: 1; transition: transform 0.2s ease; }
+.calc-tab.active .tab-icon { transform: scale(1.18); }
 
 /* ── TAB PANELS ── */
 .tab-panel { display: none; padding: 32px 32px 28px; }
@@ -528,100 +541,124 @@ h1.hero-title .highlight {
   .tab-panel { padding: 24px 20px 20px; }
 }
 
-/* ── FORM GRID ── */
+/* -- FORM GRID -- */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px 28px;
+  gap: 22px 28px;
   margin-bottom: 28px;
 }
-@media (max-width: 580px) { .form-grid { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 580px) { .form-grid { grid-template-columns: 1fr; gap: 18px; } }
 
-.field { display: flex; flex-direction: column; gap: 8px; }
+.field { display: flex; flex-direction: column; gap: 9px; position: relative; }
 .field.full { grid-column: 1 / -1; }
 
 label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--slate-400);
-  letter-spacing: 0.1em;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--slate-500);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  transition: color 0.2s ease;
+  user-select: none;
 }
+.field:focus-within label { color: var(--blue-300); }
 .label-hint {
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
   color: var(--slate-600);
   font-size: 10px;
+  font-style: italic;
 }
 
-/* ── INPUTS ── */
+/* -- INPUTS -- */
 input[type="number"],
 input[type="text"],
-select,
-textarea {
+input[type="date"],
+select {
   font-family: var(--mono);
   font-size: 14px;
-  padding: 12px 14px;
-  border: 1px solid var(--border-2);
+  padding: 13px 16px;
+  border: 1.5px solid rgba(255,255,255,0.09);
   border-radius: var(--radius);
   background: rgba(255,255,255,0.04);
   color: var(--text);
   width: 100%;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.15s ease;
   -moz-appearance: textfield;
   appearance: textfield;
-  /* Prevent select from inheriting appearance:textfield — reset below */
+  line-height: 1.4;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+input[type="number"]:not(:focus):hover,
+input[type="text"]:not(:focus):hover,
+input[type="date"]:not(:focus):hover,
+select:not(:focus):hover {
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--blue-400);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.18), 0 4px 16px rgba(59,130,246,0.1), inset 0 1px 0 rgba(59,130,246,0.08);
+  background: rgba(59,130,246,0.07);
+  transform: translateY(-1px);
+}
+input::placeholder { color: var(--slate-700); }
+
+input[type="date"] { color-scheme: dark; }
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5); cursor: pointer; border-radius: 4px; padding: 2px; transition: filter 0.2s;
+}
+input[type="date"]:focus::-webkit-calendar-picker-indicator {
+  filter: invert(0.5) sepia(1) hue-rotate(170deg) saturate(3);
+}
 
 select {
   cursor: pointer;
   appearance: none !important;
   -webkit-appearance: none !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%2364748B' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 36px;
+  background-position: right 14px center;
+  padding-right: 38px;
 }
-select option {
-  background: var(--navy-800);
-  color: var(--text);
+select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%2360A5FA' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--blue-400);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
-  background: rgba(59,130,246,0.06);
-}
+select option { background: #0d1b35; color: var(--text); }
 
 .input-wrap { position: relative; }
 .input-prefix {
   position: absolute;
-  left: 13px; top: 50%; transform: translateY(-50%);
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--slate-500);
-  pointer-events: none;
+  left: 14px; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 14px;
+  color: var(--slate-600); pointer-events: none;
+  transition: color 0.2s ease; z-index: 1; font-weight: 500;
 }
-.input-wrap input { padding-left: 26px; }
+.input-wrap:focus-within .input-prefix { color: var(--blue-300); }
+.input-wrap input { padding-left: 30px; }
 .input-suffix {
   position: absolute;
-  right: 13px; top: 50%; transform: translateY(-50%);
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--slate-500);
-  pointer-events: none;
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  right: 14px; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 11px;
+  color: var(--slate-600); pointer-events: none;
+  font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: color 0.2s ease;
 }
+.input-wrap:focus-within .input-suffix { color: var(--blue-400); }
+.input-wrap input:not([type="date"]) { padding-right: 44px; }
 
 /* ── CALCULATE BUTTON ── */
 .calc-btn {
