@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Who Uses SLA Breach Calculators? | SLABreachCalculator.site</title>
-<meta name="description" content="Discover how IT managers, procurement teams, and operations directors use SLA breach calculators to enforce contracts.">
+<title>Blog & Resources — SLA Breach Calculator | SLABreachCalculator.site</title>
+<meta name="description" content="Technical guides, tutorials, and deep-dives on calculating SLA breach penalties, uptime service credits, and managing IT service contracts.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://slabreachcalculator.site/about">
+<link rel="canonical" href="https://slabreachcalculator.site/blog/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://slabreachcalculator.site/about">
-<meta property="og:title" content="Who Uses SLA Breach Calculators?">
-<meta property="og:description" content="Discover how IT managers, procurement teams, and operations directors use SLA breach calculators to enforce contracts.">
+<meta property="og:url" content="https://slabreachcalculator.site/blog/">
+<meta property="og:title" content="Blog & Resources — SLA Breach Calculator | SLABreachCalculator.site">
+<meta property="og:description" content="Technical guides, tutorials, and deep-dives on calculating SLA breach penalties, uptime service credits, and managing IT service contracts.">
 <meta property="og:site_name" content="SLABreachCalculator.site">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,26 +85,20 @@ footer { border-top: 1px solid var(--border); background: rgba(6,13,27,0.8); bac
 .footer-links a:hover { color: var(--blue-300); }
 .footer-sep { color: var(--slate-700); }
 .footer-note { font-size: 12px; color: var(--slate-600); font-family: var(--mono); }
-/* ── USE CASES ── */
-.use-cases { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 40px; margin-bottom: 48px; position: relative; overflow: hidden; }
-.use-cases::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent); }
-.use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
-@media (max-width: 580px) { .use-case-grid { grid-template-columns: 1fr; } }
-.use-case { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; display: flex; gap: 16px; align-items: flex-start; transition: all 0.2s ease; }
-.use-case:hover { border-color: rgba(59,130,246,0.25); background: rgba(59,130,246,0.05); }
-.use-case-icon { width: 40px; height: 40px; flex-shrink: 0; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-top: 1px; }
-.use-case h3, .use-case h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
-.use-case p { font-size: 13px; color: var(--slate-400); line-height: 1.55; }
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "@id": "https://slabreachcalculator.site/about",
-  "name": "About SLABreachCalculator.site",
-  "url": "https://slabreachcalculator.site/about",
-  "description": "About page for SLABreachCalculator.site — a free, privacy-first SLA breach penalty calculator.",
-  "isPartOf": { "@type": "WebSite", "url": "https://slabreachcalculator.site", "name": "SLABreachCalculator.site" }
+  "@type": "Blog",
+  "@id": "https://slabreachcalculator.site/blog",
+  "name": "SLA Breach Calculator Blog",
+  "url": "https://slabreachcalculator.site/blog",
+  "description": "Guides and tutorials on calculating SLA breaches.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "SLABreachCalculator.site",
+    "url": "https://slabreachcalculator.site"
+  }
 }
 </script>
 
@@ -132,7 +126,7 @@ footer { border-top: 1px solid var(--border); background: rgba(6,13,27,0.8); bac
   <nav class="nav-links" aria-label="Site navigation" style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end;">
     <a href="/" class="nav-link">Calculator</a>
     <a href="/how-to-calculate-sla-breach-penalties/" class="nav-link">How It Works</a>
-    <a href="/who-uses-sla-breach-calculators/" class="nav-link active">Use Cases</a>
+    <a href="/who-uses-sla-breach-calculators/" class="nav-link">Use Cases</a>
     <a href="/frequently-asked-questions-about-sla-breaches/" class="nav-link">FAQ</a>
     <a href="/about/" class="nav-link">About</a>
     <a href="/contact/" class="nav-link">Contact</a>
@@ -140,49 +134,22 @@ footer { border-top: 1px solid var(--border); background: rgba(6,13,27,0.8); bac
 </header>
 
 <section class="hero" aria-labelledby="page-heading">
-  <div class="hero-eyebrow">Guide</div>
-  <h1 id="page-heading" class="page-title">Who Uses SLA Breach Calculators?</h1>
-  <p class="hero-sub">Discover how IT managers, procurement teams, and operations directors use SLA breach calculators to enforce contracts.</p>
+  <div class="hero-eyebrow">Resources & Guides</div>
+  <h1 id="page-heading" class="page-title">SLA Breach <span>Blog</span></h1>
+  <p class="hero-sub">Guides, tutorials, and expert insights on calculating SLA penalties and service credits.</p>
 </section>
-
 <div class="container">
-<!-- ══ USE CASES ══ -->
-  <section class="use-cases reveal" aria-labelledby="who-uses-sla-breach-calculators">
-    <div class="section-eyebrow">Who Uses This</div>
-    <h2 id="who-uses-sla-breach-calculators" class="section-title">Built for IT & Operations Professionals</h2>
-    <div class="use-case-grid">
-      <div class="use-case">
-        <div class="use-case-icon" aria-hidden="true">🖥️</div>
-        <div>
-          <h3 class="use-case-h">IT Managers</h3>
-          <p>Track cloud and hosting vendor SLA compliance. Document breaches for service credit claims or contract renegotiations.</p>
-        </div>
-      </div>
-      <div class="use-case">
-        <div class="use-case-icon" aria-hidden="true">📋</div>
-        <div>
-          <h3 class="use-case-h">Procurement Officers</h3>
-          <p>Audit supplier performance and enforce contractual penalties. Keep vendors accountable across multiple agreements.</p>
-        </div>
-      </div>
-      <div class="use-case">
-        <div class="use-case-icon" aria-hidden="true">⚙️</div>
-        <div>
-          <h3 class="use-case-h">Operations Directors</h3>
-          <p>Calculate delivery penalty exposure in logistics and services contracts. Flag breaches before invoicing cycles.</p>
-        </div>
-      </div>
-      <div class="use-case">
-        <div class="use-case-icon" aria-hidden="true">🚀</div>
-        <div>
-          <h3 class="use-case-h">Startup CTOs</h3>
-          <p>Understand your own exposure when you're the vendor. Know what you owe customers before they send a claim.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="content-card">
+    <h2 class="section-h"><a href="/blog/how-to-calculate-sla-uptime-credits-2026/" style="color:var(--white);text-decoration:none;">How to calculate SLA uptime service credits 2026 — Step-by-Step Guide</a></h2>
+    <p class="body-text">A step-by-step technical guide on manually calculating downtime overages and converting them into financial service credits. Learn the exact formula vendors use.</p>
+    <a href="/blog/how-to-calculate-sla-uptime-credits-2026/" class="nav-link" style="color:var(--blue-300);padding:0;margin-top:10px;display:inline-block;">Read Tutorial →</a>
+  </div>
+  <div class="content-card">
+    <h2 class="section-h"><a href="/blog/sla-service-credits-vs-penalties/" style="color:var(--white);text-decoration:none;">SLA service credits vs financial penalties 2026 — Complete Comparison</a></h2>
+    <p class="body-text">What is the difference between an SLA service credit and a direct cash penalty? A deep dive into enterprise IT contracts and which remedy you should negotiate for.</p>
+    <a href="/blog/sla-service-credits-vs-penalties/" class="nav-link" style="color:var(--blue-300);padding:0;margin-top:10px;display:inline-block;">Read Comparison →</a>
+  </div>
 </div>
-
 <footer role="contentinfo">
   <div class="footer-logo">SLABreach<span>Calculator</span>.site</div>
   <div class="footer-links">

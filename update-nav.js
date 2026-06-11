@@ -7,6 +7,7 @@ const navLinksTemplate = `  <nav class="nav-links" aria-label="Site navigation" 
     <a href="/" class="nav-link{CALC_ACTIVE}">Calculator</a>
     <a href="/how-to-calculate-sla-breach-penalties/" class="nav-link{HOW_ACTIVE}">How It Works</a>
     <a href="/who-uses-sla-breach-calculators/" class="nav-link{USES_ACTIVE}">Use Cases</a>
+    <a href="/blog/" class="nav-link{BLOG_ACTIVE}">Blog</a>
     <a href="/frequently-asked-questions-about-sla-breaches/" class="nav-link{FAQ_ACTIVE}">FAQ</a>
     <a href="/about/" class="nav-link{ABOUT_ACTIVE}">About</a>
     <a href="/contact/" class="nav-link{CONTACT_ACTIVE}">Contact</a>

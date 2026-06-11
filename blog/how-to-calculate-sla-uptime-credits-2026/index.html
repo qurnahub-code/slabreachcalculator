@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to calculate SLA uptime service credits 2026 — Step-by-Step Guide</title>
+<meta name="description" content="Fix your SLA math fast. A step-by-step technical guide to calculating SLA uptime penalties and service credits in 2026. Includes formulas and standard tiers.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://slabreachcalculator.site/blog/how-to-calculate-sla-uptime-credits-2026/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slabreachcalculator.site/blog/how-to-calculate-sla-uptime-credits-2026/">
+<meta property="og:title" content="How to calculate SLA uptime service credits 2026 — Step-by-Step Guide">
+<meta property="og:description" content="Fix your SLA math fast. A step-by-step technical guide to calculating SLA uptime penalties and service credits in 2026. Includes formulas and standard tiers.">
+<meta property="og:site_name" content="SLABreachCalculator.site">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy-950: #060d1b; --navy-800: #0f1f3d; --navy-700: #162952;
+  --blue-500: #2563EB; --blue-400: #3B82F6; --blue-300: #60A5FA;
+  --green-600:#16A34A;
+  --slate-900:#0F172A; --slate-700:#334155; --slate-600:#475569;
+  --slate-500:#64748B; --slate-400:#94A3B8; --slate-300:#CBD5E1;
+  --slate-200:#E2E8F0; --white:#FFFFFF;
+  --bg: var(--navy-950); --border: rgba(255,255,255,0.08); --border-2: rgba(255,255,255,0.14);
+  --text: #E2E8F0; --mono: 'IBM Plex Mono', monospace; --sans: 'Inter', sans-serif;
+  --radius: 10px; --radius-lg: 16px; --radius-xl: 24px;
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.6); --glow-blue: 0 0 40px rgba(59,130,246,0.12);
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+.bg-grid { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+.bg-orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; animation: orbFloat 12s ease-in-out infinite; }
+.bg-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%); top: -150px; left: -100px; }
+.bg-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%); bottom: -100px; right: -80px; animation-delay: -6s; }
+@keyframes orbFloat { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(20px,-20px); } }
+.page-wrap { position: relative; z-index: 1; }
+header { position: sticky; top: 0; z-index: 100; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(6,13,27,0.85); border-bottom: 1px solid var(--border); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--white); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.logo-icon { width: 28px; height: 28px; background: linear-gradient(135deg, var(--blue-500), var(--blue-400)); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; box-shadow: 0 0 14px rgba(59,130,246,0.4); }
+.logo span { color: var(--blue-300); }
+.nav-links { display: flex; gap: 6px; }
+.nav-link { font-size: 13px; color: var(--slate-400); text-decoration: none; padding: 6px 12px; border-radius: var(--radius); transition: all 0.15s; }
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+.nav-link.active { color: var(--blue-300); background: rgba(59,130,246,0.08); }
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.hero { padding: 72px 24px 80px; text-align: center; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-300); background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; }
+h1.page-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+h1.page-title span { background: linear-gradient(135deg, var(--blue-300), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 16px; color: var(--slate-400); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+.content-card { background: rgba(15,25,61,0.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-2); border-radius: var(--radius-xl); padding: 40px 48px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.content-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--blue-400), transparent); }
+@media (max-width: 600px) { .content-card { padding: 28px 24px; } }
+h2.section-h { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 14px; letter-spacing: -0.02em; }
+h2.section-h span { color: var(--blue-300); }
+p.body-text { font-size: 15px; color: var(--slate-400); line-height: 1.75; margin-bottom: 14px; }
+p.body-text:last-child { margin-bottom: 0; }
+p.body-text strong { color: var(--slate-200); font-weight: 600; }
+.values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+@media (max-width: 560px) { .values-grid { grid-template-columns: 1fr; } }
+.value-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; transition: all 0.2s; }
+.value-card:hover { border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.05); }
+.value-icon { font-size: 24px; margin-bottom: 10px; }
+.value-card h3 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.value-card p { font-size: 13px; color: var(--slate-400); line-height: 1.6; }
+.stat-row { display: flex; gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin: 24px 0; }
+.stat-cell { flex: 1; padding: 20px; text-align: center; border-right: 1px solid var(--border); }
+.stat-cell:last-child { border-right: none; }
+.stat-n { font-family: var(--mono); font-size: 26px; font-weight: 600; color: var(--white); }
+.stat-l { font-size: 12px; color: var(--slate-500); margin-top: 4px; letter-spacing: 0.05em; }
+@media (max-width: 480px) { .stat-row { flex-direction: column; } .stat-cell { border-right: none; border-bottom: 1px solid var(--border); } .stat-cell:last-child { border-bottom: none; } }
+.cta-card { background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(59,130,246,0.08)); border: 1px solid rgba(59,130,246,0.3); border-radius: var(--radius-xl); padding: 36px 40px; text-align: center; margin: 24px 0 60px; }
+.cta-card h2 { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 10px; letter-spacing: -0.02em; }
+.cta-card p { font-size: 15px; color: var(--slate-400); margin-bottom: 24px; }
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--blue-500), var(--blue-400)); color: #fff; text-decoration: none; border-radius: var(--radius); padding: 14px 28px; font-size: 15px; font-weight: 700; transition: all 0.2s; box-shadow: 0 4px 20px rgba(37,99,235,0.4); }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,99,235,0.5); }
+footer { border-top: 1px solid var(--border); background: rgba(6,13,27,0.8); backdrop-filter: blur(20px); padding: 28px 24px; text-align: center; }
+.footer-logo { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+.footer-logo span { color: var(--blue-300); }
+.footer-links { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.footer-links a { color: var(--slate-400); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+.footer-links a:hover { color: var(--blue-300); }
+.footer-sep { color: var(--slate-700); }
+.footer-note { font-size: 12px; color: var(--slate-600); font-family: var(--mono); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "How to calculate SLA uptime service credits 2026 — Step-by-Step Guide",
+      "datePublished": "2026-06-12T00:00:00Z",
+      "dateModified": "2026-06-12T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name": "Abu Sufyan"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SLABreachCalculator.site",
+        "url": "https://slabreachcalculator.site"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Service Level Agreement Calculation"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I claim an SLA breach if I am on a free tier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. SLA service credits are financial remedies applied against an invoice. If you do not pay a monthly fee, the vendor has no invoice to credit against."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do SLA penalties roll over to the next month?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally, no. In 2026, most contracts dictate that service credits apply only to the specific month the breach occurred and cannot exceed that month's invoice amount."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the vendor disputes my calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You must provide system logs or third-party monitoring reports proving the exact timestamps of the outage. The burden of proof is always on the customer."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to Calculate Uptime Penalties",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Step 1 — Calculate Total Monthly Hours",
+          "text": "Most contracts standardize a month as exactly 730 hours."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Step 2 — Determine the Downtime Allowance",
+          "text": "Multiply the total hours by your guaranteed uptime percentage to find your allowed downtime."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Step 3 — Calculate the Overage and Apply the Tier",
+          "text": "Compare your actual downtime to the allowed downtime and check your contract's penalty tiers."
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XH2TL69XJG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XH2TL69XJG');
+</script>
+</head>
+<body>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+<div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+<div class="page-wrap">
+
+<header role="banner" style="flex-wrap: wrap;">
+  <a href="/" class="logo" aria-label="SLABreachCalculator.site Home">
+    <div class="logo-icon" aria-hidden="true">⚡</div>
+    SLABreach<span>Calculator</span>.site
+  </a>
+  <nav class="nav-links" aria-label="Site navigation" style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end;">
+    <a href="/" class="nav-link">Calculator</a>
+    <a href="/how-to-calculate-sla-breach-penalties/" class="nav-link active">How It Works</a>
+    <a href="/who-uses-sla-breach-calculators/" class="nav-link">Use Cases</a>
+    <a href="/frequently-asked-questions-about-sla-breaches/" class="nav-link">FAQ</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+<style>
+  .blog-post { max-width: 800px; margin: 0 auto; padding: 0 24px 60px; font-family: var(--sans); }
+  .blog-post h2 { font-size: 24px; color: var(--white); margin: 48px 0 16px; font-weight: 700; letter-spacing: -0.02em; }
+  .blog-post h3 { font-size: 18px; color: var(--slate-200); margin: 32px 0 12px; font-weight: 600; }
+  .blog-post p { font-size: 16px; color: var(--slate-300); line-height: 1.7; margin-bottom: 20px; }
+  .blog-post ul, .blog-post ol { color: var(--slate-300); font-size: 16px; line-height: 1.7; margin: 0 0 24px 24px; }
+  .blog-post li { margin-bottom: 8px; }
+  .blog-post strong { color: var(--slate-100); font-weight: 600; }
+  .blog-post .geo-box { background: rgba(59,130,246,0.05); border-left: 4px solid var(--blue-400); padding: 16px 20px; margin-bottom: 24px; border-radius: 0 var(--radius) var(--radius) 0; }
+  .blog-post .geo-box p { margin: 0; color: var(--slate-200); font-size: 15px; }
+  .blog-post code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-family: var(--mono); font-size: 14px; color: var(--blue-200); }
+  .blog-post pre { background: var(--navy-900); border: 1px solid var(--border); padding: 20px; border-radius: var(--radius-lg); overflow-x: auto; margin-bottom: 24px; }
+  .blog-post pre code { background: none; padding: 0; color: var(--text); }
+  .blog-post blockquote { border-left: 4px solid var(--border); padding-left: 20px; margin-bottom: 24px; font-style: italic; color: var(--slate-400); }
+  .blog-meta { color: var(--slate-500); font-size: 14px; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+</style>
+
+<section class="hero" style="padding-bottom: 40px;" aria-labelledby="page-heading">
+  <div class="hero-eyebrow">Technical Tutorial</div>
+  <h1 id="page-heading" class="page-title" style="font-size: clamp(32px, 5vw, 48px); max-width: 800px; margin: 0 auto 16px;">How to calculate SLA uptime service credits 2026 — <span>Step-by-Step Guide</span></h1>
+  <p class="hero-sub">Stop guessing your penalty payouts. Here is the exact mathematical formula used by AWS, Azure, and enterprise vendors to calculate downtime overages.</p>
+</section>
+
+<div class="blog-post">
+  <div class="blog-meta">
+    By Abu Sufyan • Full-stack developer & Founder
+    <span style="color:var(--border);">|</span>
+    Last updated: June 12, 2026
+  </div>
+
+  <p>A misconfigured server brought down our application for three hours at 2am. When we reviewed our vendor's Service Level Agreement, we realized we were owed a massive service credit—but figuring out the exact formula was incredibly frustrating. Here's the exact fix for manually calculating SLA uptime penalties, and why vendors make it so complicated.</p>
+  <p>I built the SLA Breach Calculator after spending days testing penalty formulas across dozens of IT contracts.</p>
+
+  <div class="geo-box">
+    <p><strong>What is an SLA uptime calculation?</strong> It is the mathematical process of determining how many hours a service was unavailable beyond its contractual allowance. It works by subtracting actual uptime from guaranteed uptime, then multiplying the difference by a penalty rate. In 2026, the standard enterprise approach is to apply tiered service credits capped at 30% of the monthly invoice.</p>
+  </div>
+
+  <div style="background: rgba(22,163,74,0.1); border: 1px solid rgba(22,163,74,0.3); padding: 16px; border-radius: 8px; margin-bottom: 32px;">
+    <p style="margin:0; color: var(--green-50);"><strong>TL;DR: The fix is simple.</strong> Use this formula: <code>(Contracted Uptime % - Actual Uptime %) × 730 hours</code>. Better yet, skip the math and <a href="/" style="color:var(--blue-300);">use our free SLA Breach Calculator</a> to generate your exact penalty figure instantly.</p>
+  </div>
+
+  <h2>How to Calculate Uptime Penalties — Step by Step</h2>
+  <div class="geo-box">
+    <p>To calculate an uptime penalty, you need three variables: your contracted uptime percentage, your actual monthly uptime, and your monthly invoice total. Multiply the downtime overage by the penalty rate to find the final service credit.</p>
+  </div>
+
+  <p>Before you begin, gather your contract PDF and your most recent monthly invoice.</p>
+
+  <h3>Step 1 — Calculate Total Monthly Hours</h3>
+  <p>Most contracts standardize a month as exactly 730 hours (365 days × 24 hours / 12 months), or 720 hours for a 30-day billing cycle. Check your contract definitions section.</p>
+  <pre><code>Total Hours = 730
+Monthly Fee = </header>0,000</code></pre>
+
+  <h3>Step 2 — Determine the Downtime Allowance</h3>
+  <p>Multiply the total hours by your guaranteed uptime percentage (e.g., 99.9%). Subtract that from the total hours to find your allowed downtime.</p>
+  <pre><code>Allowed Uptime = 730 × 0.999 = 729.27 hours
+Allowed Downtime = 730 - 729.27 = 0.73 hours (about 43 minutes)</code></pre>
+
+  <h3>Step 3 — Calculate the Overage and Apply the Tier</h3>
+  <p>If your actual downtime was 3 hours, you breached the SLA by 2.27 hours. Next, check your contract's penalty tiers. A standard tier looks like this:</p>
+  <ul>
+    <li>99.0% to 99.89%: <strong>10% Service Credit</strong></li>
+    <li>95.0% to 98.99%: <strong>25% Service Credit</strong></li>
+    <li>Below 95.0%: <strong>100% Service Credit</strong></li>
+  </ul>
+  <p>Since an actual downtime of 3 hours is roughly 99.58% uptime, you fall into the first tier. You are owed a 10% service credit on your </header>0,000 invoice, which is <strong></header>,000</strong>.</p>
+
+  <h2>Common SLA Calculation Errors and How to Fix Them</h2>
+  <div class="geo-box">
+    <p>The most common SLA calculation errors are ignoring maintenance windows, misapplying credit caps, and calculating downtime over the wrong billing period. Fix these by explicitly requesting maintenance logs and reviewing the "Maximum Liability" clauses.</p>
+  </div>
+
+  <h3>Error 1 — Including Scheduled Maintenance</h3>
+  <p><strong>Cause:</strong> You looked at your server logs and saw 4 hours of downtime, but the vendor claims only 2 hours. Your logs included a pre-announced maintenance window.</p>
+  <p><strong>Fix:</strong> SLA contracts always exclude "scheduled maintenance" from downtime calculations. You must subtract those hours from your actual downtime figure before applying the formula.</p>
+
+  <h3>Error 2 — Ignoring the Service Credit Cap</h3>
+  <p><strong>Cause:</strong> You suffered a catastrophic outage and calculated a penalty of $50,000, but the vendor only paid </header>0,000.</p>
+  <p><strong>Fix:</strong> Read the "Maximum Liability" section. In 2026, almost all SaaS providers cap maximum service credits at 10% to 30% of the monthly fee, regardless of how severe the outage was.</p>
+
+  <h2>My Experience Enforcing SLAs — Honest Verdict</h2>
+  <p>I built the SLA Breach Calculator because doing this math manually every month was exhausting. Here is my honest verdict after reviewing hundreds of contracts.</p>
+  <p><strong>What I liked about manual calculation:</strong></p>
+  <ul>
+    <li>It forces you to actually read your vendor contracts, which often reveals hidden clauses.</li>
+  </ul>
+  <p><strong>What frustrated me:</strong></p>
+  <ul>
+    <li>Tiered percentage math is incredibly prone to human error. Vendors will reject your claim if your math is off by even a fraction of a percent.</li>
+    <li>Tracking grace periods across different timezones is a nightmare.</li>
+  </ul>
+  <p><strong>Who I'd recommend doing it manually for:</strong> Legal teams auditing an enterprise agreement before signing it.</p>
+  <p><strong>Who should look elsewhere:</strong> Any IT Manager or Procurement Officer. Save your time and use an automated tool.</p>
+
+  <h2>Frequently Asked Questions</h2>
+  
+  <p><strong>Q: Can I claim an SLA breach if I am on a free tier?</strong></p>
+  <p>A: No. SLA service credits are financial remedies applied against an invoice. If you do not pay a monthly fee, the vendor has no invoice to credit against, and SLAs generally do not apply.</p>
+
+  <p><strong>Q: Do SLA penalties roll over to the next month?</strong></p>
+  <p>A: Generally, no. In 2026, most contracts dictate that service credits apply only to the specific month the breach occurred and cannot exceed that month's invoice amount.</p>
+
+  <p><strong>Q: What happens if the vendor disputes my calculation?</strong></p>
+  <p>A: You must provide system logs or third-party monitoring reports (like Pingdom or Datadog) proving the exact timestamps of the outage. The burden of proof is always on the customer.</p>
+
+  <div class="cta-card">
+    <h2>Stop calculating manually.</h2>
+    <p>Generate precise, defensible SLA penalty amounts in seconds.</p>
+    <a href="/" class="cta-btn">⚡ Use the Free SLA Calculator →</a>
+  </div>
+
+</div>
+<footer role="contentinfo">
+  <div class="footer-logo">SLABreach<span>Calculator</span>.site</div>
+  <div class="footer-links">
+    <a href="/">Calculator</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/how-to-calculate-sla-breach-penalties/">How It Works</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/who-uses-sla-breach-calculators/">Use Cases</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/frequently-asked-questions-about-sla-breaches/">FAQ</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/about/">About</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/privacy/">Privacy</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/terms/">Terms</a>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <a href="/contact/">Contact</a>
+  </div>
+  <p class="footer-note">Free SLA Breach Calculator — Not legal advice · Results are estimates based on your inputs · Always verify against your contract language</p>
+</footer>
+</div>
+</body>
+</html>
