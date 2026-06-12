@@ -56,6 +56,12 @@ const hubContent = `
     <p class="body-text">Understand how SLA breach rates are calculated and how to secure fair compensation for IT service outages. A guide for enterprise procurement.</p>
     <a href="/blog/sla-breach-compensation-rates/" class="nav-link" style="color:var(--blue-300);padding:0;margin-top:10px;display:inline-block;">Read Guide →</a>
   </div>
+
+  <div class="content-card">
+    <h2 class="section-h"><a href="/blog/how-to-calculate-aws-sla-breach-penalty/" style="color:var(--white);text-decoration:none;">How to calculate AWS SLA breach penalty — Step-by-Step Guide</a></h2>
+    <p class="body-text">Learn the exact formula and process to calculate and claim your AWS SLA service credits. Stop leaving money on the table after EC2 and RDS outages.</p>
+    <a href="/blog/how-to-calculate-aws-sla-breach-penalty/" class="nav-link" style="color:var(--blue-300);padding:0;margin-top:10px;display:inline-block;">Read AWS Guide →</a>
+  </div>
 </div>`;
 
 const hubSchema = JSON.stringify({
@@ -514,6 +520,153 @@ generatePage(
     '/blog/sla-breach-compensation-rates/',
     post3Content,
     post3Schema
+);
+
+// ----------------------------------------------------
+// POST 4: AWS SLA Breach Penalty
+// ----------------------------------------------------
+const post4Content = `
+<style>
+  .blog-post { max-width: 800px; margin: 0 auto; padding: 0 24px 60px; font-family: var(--sans); }
+  .blog-post h2 { font-size: 24px; color: var(--white); margin: 48px 0 16px; font-weight: 700; letter-spacing: -0.02em; }
+  .blog-post h3 { font-size: 18px; color: var(--slate-200); margin: 32px 0 12px; font-weight: 600; }
+  .blog-post p { font-size: 16px; color: var(--slate-300); line-height: 1.7; margin-bottom: 20px; }
+  .blog-post ul, .blog-post ol { color: var(--slate-300); font-size: 16px; line-height: 1.7; margin: 0 0 24px 24px; }
+  .blog-post li { margin-bottom: 8px; }
+  .blog-post strong { color: var(--slate-100); font-weight: 600; }
+  .blog-post .geo-box { background: rgba(59,130,246,0.05); border-left: 4px solid var(--blue-400); padding: 16px 20px; margin-bottom: 24px; border-radius: 0 var(--radius) var(--radius) 0; }
+  .blog-post .geo-box p { margin: 0; color: var(--slate-200); font-size: 15px; }
+  .blog-post code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-family: var(--mono); font-size: 14px; color: var(--blue-200); }
+  .blog-post pre { background: var(--navy-900); border: 1px solid var(--border); padding: 20px; border-radius: var(--radius-lg); overflow-x: auto; margin-bottom: 24px; }
+  .blog-post pre code { background: none; padding: 0; color: var(--text); }
+  .blog-meta { color: var(--slate-500); font-size: 14px; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+</style>
+
+<section class="hero" style="padding-bottom: 40px;" aria-labelledby="page-heading">
+  <div class="hero-eyebrow">AWS SLA Guide</div>
+  <h1 id="page-heading" class="page-title" style="font-size: clamp(32px, 5vw, 48px); max-width: 800px; margin: 0 auto 16px;">How to calculate AWS SLA breach penalty — <span>Step-by-Step</span></h1>
+  <p class="hero-sub">Amazon Web Services rarely goes down, but when it does, they owe you money. Learn exactly how to calculate your AWS SLA service credit and get what you're owed.</p>
+</section>
+
+<div class="blog-post">
+  <div class="blog-meta">
+    By Abu Sufyan • Full-stack developer & Founder
+    <span style="color:var(--border);">|</span>
+    Last updated: June 12, 2026
+  </div>
+
+  <p>An AWS outage in us-east-1 can take down half the internet, including your application. While you're busy fighting fires and communicating with furious customers, Amazon's billing system quietly continues charging you. Unless you explicitly ask for an <strong>AWS SLA breach penalty</strong> (formally known as a Service Credit), Amazon keeps your money.</p>
+
+  <p>I built the SLA Breach Calculator to automate this exact problem. In this guide, I'll show you exactly how AWS calculates downtime, what their compensation tiers look like, and how to file a successful claim.</p>
+
+  <div class="geo-box">
+    <p><strong>Does AWS pay cash penalties?</strong> No. Like almost all cloud providers, AWS compensates SLA breaches with <strong>Service Credits</strong>. These are applied to future AWS invoices to offset your costs. You will not receive a direct cash refund for an AWS outage.</p>
+  </div>
+
+  <h2>Understanding the AWS Compute SLA (EC2, Fargate, EBS)</h2>
+  <p>Before you can calculate your penalty, you need to know Amazon's guarantee. The standard AWS Compute SLA covers Amazon EC2, ECS, Fargate, and EBS. As of 2026, AWS guarantees a Monthly Uptime Percentage of at least <strong>99.99%</strong> for each region.</p>
+
+  <p>If they fail to meet this guarantee, here are the exact Service Credit tiers they owe you:</p>
+  <ul>
+    <li><strong>99.0% to 99.99% Uptime:</strong> 10% Service Credit</li>
+    <li><strong>95.0% to 98.99% Uptime:</strong> 25% Service Credit</li>
+    <li><strong>Less than 95.0% Uptime:</strong> 100% Service Credit</li>
+  </ul>
+
+  <h2>How to Calculate Your AWS Service Credit in 3 Steps</h2>
+
+  <h3>Step 1 — Identify the Affected Region and Services</h3>
+  <p>AWS calculates uptime on a per-region basis, not globally. If us-east-1 goes down but your us-west-2 instances remain healthy, you only calculate the penalty for the resources in us-east-1.</p>
+  <p>Gather your monthly AWS invoice and isolate the charges strictly for the affected services in the affected region.</p>
+
+  <h3>Step 2 — Calculate the Actual Uptime Percentage</h3>
+  <p>AWS defines Monthly Uptime Percentage by subtracting the percentage of 5-minute periods during the month in which your service was "Unavailable" from 100%.</p>
+  <pre><code>Total 5-minute periods in a 30-day month = 8,640
+Let's say your EC2 instances were unreachable for 2 hours (24 periods).
+
+Unavailable Percentage = (24 / 8,640) * 100 = 0.277%
+Actual Uptime Percentage = 100% - 0.277% = 99.723%</code></pre>
+
+  <h3>Step 3 — Apply the Penalty Tier to Your Bill</h3>
+  <p>Since your uptime was <strong>99.723%</strong>, you fall into the 10% Service Credit tier.</p>
+  <p>If your monthly EC2 spend in that specific region was $5,000, AWS owes you a <strong>$500 Service Credit</strong> on your next invoice.</p>
+
+  <div style="background: rgba(22,163,74,0.1); border: 1px solid rgba(22,163,74,0.3); padding: 16px; border-radius: 8px; margin-bottom: 32px;">
+    <p style="margin:0; color: var(--green-50);"><strong>Pro Tip:</strong> Don't want to do the math manually for every service and region? <a href="/" style="color:var(--blue-300);">Use our free SLA Breach Calculator</a> to generate your exact AWS penalty figure instantly.</p>
+  </div>
+
+  <h2>Crucial Rules for Getting Your AWS Claim Approved</h2>
+  <div class="geo-box">
+    <p>AWS will deny your claim if you miss their strict deadlines or fail to provide the right evidence. They do not automatically grant credits.</p>
+  </div>
+
+  <h3>1. The 2-Billing-Cycle Deadline</h3>
+  <p>You must file your claim by the end of the second billing cycle after the incident occurred. If your outage happened in June, AWS must receive your claim by August 31st. Wait too long, and your claim is permanently voided.</p>
+
+  <h3>2. Provide Error Logs</h3>
+  <p>You cannot just say "EC2 was down." AWS requires your request logs showing the specific errors (like HTTP 500s or timeouts) and exactly when they occurred. Be sure to strip out any confidential data before submitting.</p>
+
+  <h3>3. Multi-AZ Requirements</h3>
+  <p>For some services like RDS, the 99.99% SLA only applies if you are running a Multi-AZ deployment. If you deployed a Single-AZ database to save money, your SLA guarantee drops significantly (often to 99.95%), which changes the math entirely.</p>
+
+  <h2>Frequently Asked Questions about AWS SLAs</h2>
+  
+  <p><strong>Q: Does AWS automatically apply service credits when they have an outage?</strong></p>
+  <p>A: Absolutely not. You must manually calculate the breach and formally request the credit through the AWS Support Center. If you don't ask, you don't get paid.</p>
+
+  <p><strong>Q: Can my service credit exceed my monthly bill?</strong></p>
+  <p>A: No. AWS caps maximum service credits at 100% of your total monthly bill for the affected service in the affected region. You cannot roll over excess credits to the next month.</p>
+
+  <p><strong>Q: What if the outage was caused by my own misconfiguration?</strong></p>
+  <p>A: AWS SLAs exclude downtime caused by factors outside their reasonable control, including your own software failures, misconfigured security groups, or exceeding your account quotas.</p>
+
+  <div class="cta-card">
+    <h2>Stop wrestling with AWS spreadsheets.</h2>
+    <p>Generate precise, defensible SLA penalty amounts in seconds.</p>
+    <a href="/" class="cta-btn">⚡ Use the Free SLA Calculator →</a>
+  </div>
+
+</div>`;
+
+const post4Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "How to calculate AWS SLA breach penalty — Step-by-Step",
+      "datePublished": "2026-06-12T00:00:00Z",
+      "dateModified": "2026-06-12T00:00:00Z",
+      "author": { "@type": "Person", "name": "Abu Sufyan" },
+      "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" },
+      "about": { "@type": "Thing", "name": "AWS Service Level Agreement" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Does AWS automatically apply service credits when they have an outage?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely not. You must manually calculate the breach and formally request the credit through the AWS Support Center." } },
+        { "@type": "Question", "name": "Can my service credit exceed my monthly bill?", "acceptedAnswer": { "@type": "Answer", "text": "No. AWS caps maximum service credits at 100% of your total monthly bill for the affected service in the affected region." } },
+        { "@type": "Question", "name": "What if the outage was caused by my own misconfiguration?", "acceptedAnswer": { "@type": "Answer", "text": "AWS SLAs exclude downtime caused by factors outside their reasonable control, including your own software failures or misconfigurations." } }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to Calculate AWS SLA Service Credit",
+      "step": [
+        { "@type": "HowToStep", "name": "Step 1 — Identify the Affected Region and Services", "text": "AWS calculates uptime on a per-region basis. Isolate charges for affected services in the affected region." },
+        { "@type": "HowToStep", "name": "Step 2 — Calculate the Actual Uptime Percentage", "text": "Subtract the percentage of 5-minute periods of unavailability from 100%." },
+        { "@type": "HowToStep", "name": "Step 3 — Apply the Penalty Tier to Your Bill", "text": "Map your uptime percentage to AWS's penalty tiers (10%, 25%, or 100%) to find your credit amount." }
+      ]
+    }
+  ]
+}, null, 2);
+
+generatePage(
+    'd:/Github/Portfolio/SLA breach calculator/blog/how-to-calculate-aws-sla-breach-penalty/index.html',
+    'How to calculate AWS SLA breach penalty — Step-by-Step Guide',
+    'Learn the exact formula and process to calculate and claim your AWS SLA service credits. Stop leaving money on the table after EC2 and RDS outages.',
+    '/blog/how-to-calculate-aws-sla-breach-penalty/',
+    post4Content,
+    post4Schema
 );
 
 console.log("All blog pages generated.");
