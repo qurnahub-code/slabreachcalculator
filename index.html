@@ -211,6 +211,7 @@
   --shadow-lg: 0 20px 60px rgba(0,0,0,0.6);
   --glow-blue: 0 0 40px rgba(59,130,246,0.15);
   --glow-red:  0 0 30px rgba(239,68,68,0.2);
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 html { scroll-behavior: smooth; }
@@ -354,7 +355,7 @@ header {
   padding: 6px 14px;
   border-radius: 20px;
   margin-bottom: 28px;
-  animation: fadeSlideDown 0.6s ease both;
+  animation: fadeSlideDown 400ms var(--ease-out-strong) both;
 }
 .hero-eyebrow::before {
   content: '';
@@ -377,7 +378,7 @@ h1.hero-title {
   letter-spacing: -0.03em;
   max-width: 760px;
   margin: 0 auto 20px;
-  animation: fadeSlideDown 0.6s 0.1s ease both;
+  animation: fadeSlideDown 400ms 100ms var(--ease-out-strong) both;
 }
 h1.hero-title em {
   font-style: normal;
@@ -399,7 +400,7 @@ h1.hero-title .highlight {
   max-width: 540px;
   margin: 0 auto 36px;
   line-height: 1.7;
-  animation: fadeSlideDown 0.6s 0.2s ease both;
+  animation: fadeSlideDown 400ms 200ms var(--ease-out-strong) both;
 }
 
 .hero-stats {
@@ -407,7 +408,7 @@ h1.hero-title .highlight {
   justify-content: center;
   gap: 32px;
   flex-wrap: wrap;
-  animation: fadeSlideDown 0.6s 0.3s ease both;
+  animation: fadeSlideDown 400ms 300ms var(--ease-out-strong) both;
 }
 .hero-stat {
   display: flex;
@@ -586,7 +587,7 @@ select {
   background: rgba(255,255,255,0.04);
   color: var(--text);
   width: 100%;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.15s ease;
+  transition: border-color 200ms ease-out, box-shadow 200ms ease-out, background 200ms ease-out, transform 160ms ease-out;
   -moz-appearance: textfield;
   appearance: textfield;
   line-height: 1.4;
@@ -670,7 +671,7 @@ select option { background: #0d1b35; color: var(--text); }
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 160ms var(--ease-out-strong), box-shadow 160ms var(--ease-out-strong);
   letter-spacing: 0.02em;
   box-shadow: 0 4px 20px rgba(37,99,235,0.4);
   position: relative;
@@ -682,14 +683,14 @@ select option { background: #0d1b35; color: var(--text); }
   inset: 0;
   background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 200ms ease-out;
 }
 .calc-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(37,99,235,0.5);
 }
 .calc-btn:hover::before { opacity: 1; }
-.calc-btn:active { transform: scale(0.99) translateY(0); }
+.calc-btn:active { transform: scale(0.97) translateY(0); }
 
 .reset-link {
   display: block;
@@ -719,7 +720,7 @@ select option { background: #0d1b35; color: var(--text); }
   border: 1px solid;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: background 200ms ease-out, border-color 200ms ease-out, box-shadow 200ms ease-out;
 }
 .meter-section::before {
   content: '';
@@ -1040,7 +1041,7 @@ select option { background: #0d1b35; color: var(--text); }
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  transition: all 0.2s ease;
+  transition: transform 160ms var(--ease-out-strong), box-shadow 160ms var(--ease-out-strong);
 }
 .use-case:hover {
   border-color: rgba(59,130,246,0.25);
@@ -1098,7 +1099,7 @@ select option { background: #0d1b35; color: var(--text); }
   font-size: 16px;
   color: var(--blue-300);
   line-height: 1;
-  transition: all 0.2s ease;
+  transition: transform 160ms var(--ease-out-strong), box-shadow 160ms var(--ease-out-strong);
 }
 .faq-item.open .faq-icon {
   background: rgba(59,130,246,0.2);
