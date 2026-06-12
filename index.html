@@ -286,15 +286,52 @@ header {
   gap: 16px;
 }
 
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: 4px;
+  z-index: 101;
+}
+
 @media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
   header {
-    flex-direction: column;
-    justify-content: center;
-    padding: 14px 16px;
-    gap: 12px;
+    position: relative;
+    padding: 14px 20px;
   }
   .nav-links {
-    justify-content: center !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(6,13,27,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 20px;
+    gap: 12px;
+    
+    /* Animation using Emil Kowalski principles */
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 300ms var(--ease-out-strong);
+    pointer-events: none;
+    align-items: stretch;
+  }
+  .nav-links.open {
+    clip-path: inset(0 0 0 0);
+    pointer-events: auto;
+  }
+  .nav-link {
+    font-size: 15px;
+    padding: 10px 14px;
+    text-align: center;
+    border-radius: var(--radius);
   }
 }
 
