@@ -286,6 +286,18 @@ header {
   gap: 16px;
 }
 
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .nav-links {
+    justify-content: center !important;
+  }
+}
+
 .logo {
   font-family: var(--mono);
   font-size: 14px;
