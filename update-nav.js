@@ -34,6 +34,7 @@ walk(dir, (filePath) => {
     let faqActive = '';
     let aboutActive = '';
     let contactActive = '';
+    let blogActive = '';
     
     if (filePath.replace(/\\/g, '/').endsWith('/SLA breach calculator/index.html')) {
         calcActive = ' active';
@@ -47,6 +48,8 @@ walk(dir, (filePath) => {
         aboutActive = ' active';
     } else if (filePath.includes('contact')) {
         contactActive = ' active';
+    } else if (filePath.includes('blog')) {
+        blogActive = ' active';
     }
     
     let newNav = navLinksTemplate
@@ -55,7 +58,8 @@ walk(dir, (filePath) => {
         .replace('{USES_ACTIVE}', usesActive)
         .replace('{FAQ_ACTIVE}', faqActive)
         .replace('{ABOUT_ACTIVE}', aboutActive)
-        .replace('{CONTACT_ACTIVE}', contactActive);
+        .replace('{CONTACT_ACTIVE}', contactActive)
+        .replace('{BLOG_ACTIVE}', blogActive);
         
     // Replace existing nav
     // Matches <nav class="nav-links" ...> ... </nav>
