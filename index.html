@@ -19,8 +19,8 @@
 <!-- ══ OPEN GRAPH / SOCIAL ══ -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://slabreachcalculator.site/">
-<meta property="og:title" content="Free SLA Breach Calculator (Response Time & Resolution SLA)">
-<meta property="og:description" content="Free tool to calculate SLA breach percentage, compliance rates, response time, and resolution time penalties. Instantly compute your service level agreement metrics.">
+<meta property="og:title" content="SLA Breach Calculator — Instantly Calculate Penalties & Service Credits">
+<meta property="og:description" content="Input your SLA contract terms and actual performance data. Get the precise penalty amount, service credits, and breach summary in seconds. Free, no signup.">
 <meta property="og:image" content="https://slabreachcalculator.site/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -30,8 +30,8 @@
 <!-- ══ TWITTER CARD ══ -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@slabreachcalc">
-<meta name="twitter:title" content="Free SLA Breach Calculator (Response Time & Resolution SLA)">
-<meta name="twitter:description" content="Free tool to calculate SLA breach percentage, compliance rates, response time, and resolution time penalties. Instantly compute your service level agreement metrics.">
+<meta name="twitter:title" content="SLA Breach Calculator — Instantly Calculate Penalties & Service Credits">
+<meta name="twitter:description" content="Free tool for IT managers and procurement teams. Calculate exact financial penalties from SLA breaches instantly.">
 <meta name="twitter:image" content="https://slabreachcalculator.site/og-image.png">
 
 <!-- ══ AIO / AI OPTIMIZATION ══ -->
@@ -1443,6 +1443,300 @@ footer {
   <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle menu">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
   </button>
+  <nav class="nav-links" aria-label="Site navigation" id="navMenu">
+    <a href="/" class="nav-link active">Calculator</a>
+    <a href="/how-to-calculate-sla-breach-penalties/" class="nav-link">How It Works</a>
+    <a href="/who-uses-sla-breach-calculators/" class="nav-link">Use Cases</a>
+    <a href="/frequently-asked-questions-about-sla-breaches/" class="nav-link">FAQ</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero" aria-labelledby="main-heading">
+  <div class="hero-eyebrow" role="note">
+    100% Free Tool
+  </div>
+  <h1 id="main-heading" class="hero-title">
+    SLA Breach <em>Calculator</em>
+  </h1>
+  <p class="hero-sub">
+    Instantly calculate SLA breach percentage, compliance rates, response time penalties, and uptime service credits for your IT contracts.
+  </p>
+  <div class="hero-stats" aria-label="Tool highlights">
+    <div class="hero-stat">
+      <div class="hero-stat-val">3</div>
+      <div class="hero-stat-key">SLA Types</div>
+    </div>
+    <div class="hero-divider" aria-hidden="true"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">5</div>
+      <div class="hero-stat-key">Currencies</div>
+    </div>
+    <div class="hero-divider" aria-hidden="true"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">100%</div>
+      <div class="hero-stat-key">Free Forever</div>
+    </div>
+    <div class="hero-divider" aria-hidden="true"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">0</div>
+      <div class="hero-stat-key">Data Stored</div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- ══ CALCULATOR ══ -->
+  <main id="calculator" aria-label="SLA Breach Calculator">
+    <div class="calc-card" role="region" aria-label="SLA calculation tool">
+      <div class="calc-card-glow" aria-hidden="true"></div>
+
+      <!-- TABS -->
+      <nav class="calc-tabs" role="tablist" aria-label="SLA calculator type">
+        <button class="calc-tab active" id="tab-uptime" role="tab" aria-selected="true" aria-controls="panel-uptime" onclick="switchTab('uptime')">
+          <span class="tab-icon" aria-hidden="true">🔄</span>Uptime / Availability
+        </button>
+        <button class="calc-tab" id="tab-response" role="tab" aria-selected="false" aria-controls="panel-response" onclick="switchTab('response')">
+          <span class="tab-icon" aria-hidden="true">⏱️</span>Response Time
+        </button>
+        <button class="calc-tab" id="tab-delivery" role="tab" aria-selected="false" aria-controls="panel-delivery" onclick="switchTab('delivery')">
+          <span class="tab-icon" aria-hidden="true">📦</span>Delivery / Milestone
+        </button>
+      </nav>
+
+      <!-- TAB: UPTIME -->
+      <div class="tab-panel active" id="panel-uptime" role="tabpanel" aria-labelledby="tab-uptime">
+        <div class="form-grid">
+          <div class="field">
+            <label for="up-sla">Contracted Uptime <span class="label-hint">target %</span></label>
+            <div class="input-wrap">
+              <input type="number" id="up-sla" value="99.9" step="0.01" min="0" max="100" placeholder="e.g. 99.9" autocomplete="off">
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="up-actual">Actual Uptime <span class="label-hint">achieved</span></label>
+            <div class="input-wrap">
+              <input type="number" id="up-actual" value="" step="0.01" min="0" max="100" placeholder="e.g. 98.5" autocomplete="off">
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="up-period">Measurement Period</label>
+            <select id="up-period">
+              <option value="720">Monthly (720 hrs)</option>
+              <option value="168">Weekly (168 hrs)</option>
+              <option value="8760">Annual (8,760 hrs)</option>
+              <option value="custom">Custom hours…</option>
+            </select>
+          </div>
+          <div class="field" id="up-custom-wrap" style="display:none">
+            <label for="up-custom-hrs">Custom Period <span class="label-hint">hours</span></label>
+            <input type="number" id="up-custom-hrs" placeholder="e.g. 2160" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="up-contract">Monthly Contract Value</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="up-contract" placeholder="e.g. 50000" autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label for="up-penalty-type">Penalty Structure</label>
+            <select id="up-penalty-type">
+              <option value="percent">% of monthly fee</option>
+              <option value="flat">Flat rate per hour down</option>
+              <option value="tiered">Tiered (standard SLA)</option>
+            </select>
+          </div>
+          <div class="field" id="up-pct-wrap">
+            <label for="up-penalty-pct">Penalty Rate <span class="label-hint">% per hour breach</span></label>
+            <div class="input-wrap">
+              <input type="number" id="up-penalty-pct" placeholder="e.g. 10" step="0.5" autocomplete="off">
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+          <div class="field" id="up-flat-wrap" style="display:none">
+            <label for="up-flat-rate">Flat Rate per Hour</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="up-flat-rate" placeholder="e.g. 500" autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label for="up-cap">Credit Cap <span class="label-hint">% of monthly fee</span></label>
+            <div class="input-wrap">
+              <input type="number" id="up-cap" value="30" placeholder="e.g. 30" autocomplete="off">
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="up-currency">Currency</label>
+            <select id="up-currency">
+              <option value="$">USD ($)</option>
+              <option value="€">EUR (€)</option>
+              <option value="£">GBP (£)</option>
+              <option value="₹">INR (₹)</option>
+              <option value="C$">CAD (C$)</option>
+            </select>
+          </div>
+        </div>
+        <button class="calc-btn" id="btn-uptime" onclick="calcUptime()" aria-label="Calculate SLA uptime penalty">
+          ⚡ Calculate SLA Penalty
+        </button>
+        <a class="reset-link" role="button" tabindex="0" onclick="resetUptime()" onkeydown="if(event.key==='Enter')resetUptime()">↺ Reset fields</a>
+      </div>
+
+      <!-- TAB: RESPONSE TIME -->
+      <div class="tab-panel" id="panel-response" role="tabpanel" aria-labelledby="tab-response">
+        <div class="form-grid">
+          <div class="field">
+            <label for="rt-target">SLA Response Target</label>
+            <div class="input-wrap">
+              <input type="number" id="rt-target" placeholder="e.g. 4" autocomplete="off">
+              <span class="input-suffix">hrs</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="rt-actual">Actual Response Time</label>
+            <div class="input-wrap">
+              <input type="number" id="rt-actual" placeholder="e.g. 11.5" autocomplete="off">
+              <span class="input-suffix">hrs</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="rt-count">Number of Incidents</label>
+            <input type="number" id="rt-count" placeholder="e.g. 7" min="1" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="rt-penalty">Penalty per Breach</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="rt-penalty" placeholder="e.g. 500" autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label for="rt-cap">Max Penalty Cap</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="rt-cap" placeholder="e.g. 5000" autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label for="rt-currency">Currency</label>
+            <select id="rt-currency">
+              <option value="$">USD ($)</option>
+              <option value="€">EUR (€)</option>
+              <option value="£">GBP (£)</option>
+              <option value="₹">INR (₹)</option>
+              <option value="C$">CAD (C$)</option>
+            </select>
+          </div>
+        </div>
+        <button class="calc-btn" id="btn-response" onclick="calcResponseTime()" aria-label="Calculate response time SLA penalty">
+          ⚡ Calculate SLA Penalty
+        </button>
+        <a class="reset-link" role="button" tabindex="0" onclick="resetResponse()" onkeydown="if(event.key==='Enter')resetResponse()">↺ Reset fields</a>
+      </div>
+
+      <!-- TAB: DELIVERY -->
+      <div class="tab-panel" id="panel-delivery" role="tabpanel" aria-labelledby="tab-delivery">
+        <div class="form-grid">
+          <div class="field">
+            <label for="dl-target">Contracted Delivery Date</label>
+            <input type="date" id="dl-target" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="dl-actual">Actual Delivery Date</label>
+            <input type="date" id="dl-actual" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="dl-type">Penalty Structure</label>
+            <select id="dl-type">
+              <option value="per-day">Per calendar day late</option>
+              <option value="per-week">Per week late</option>
+              <option value="flat">Flat fee (any delay)</option>
+              <option value="pct">% of contract value / day</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dl-rate">Penalty Rate</label>
+            <div class="input-wrap">
+              <span class="input-prefix" id="dl-prefix">$</span>
+              <input type="number" id="dl-rate" placeholder="e.g. 1000" autocomplete="off">
+            </div>
+          </div>
+          <div class="field" id="dl-contract-wrap" style="display:none">
+            <label for="dl-contract">Total Contract Value</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="dl-contract" placeholder="e.g. 200000" autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label for="dl-cap">Maximum Liability Cap</label>
+            <div class="input-wrap">
+              <span class="input-prefix">$</span>
+              <input type="number" id="dl-cap" placeholder="e.g. 25000" autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label for="dl-currency">Currency</label>
+            <select id="dl-currency">
+              <option value="$">USD ($)</option>
+              <option value="€">EUR (€)</option>
+              <option value="£">GBP (£)</option>
+              <option value="₹">INR (₹)</option>
+              <option value="C$">CAD (C$)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dl-grace">Grace Period <span class="label-hint">days, if any</span></label>
+            <div class="input-wrap">
+              <input type="number" id="dl-grace" value="0" min="0" placeholder="0" autocomplete="off">
+              <span class="input-suffix">days</span>
+            </div>
+          </div>
+        </div>
+        <button class="calc-btn" id="btn-delivery" onclick="calcDelivery()" aria-label="Calculate delivery SLA penalty">
+          ⚡ Calculate SLA Penalty
+        </button>
+        <a class="reset-link" role="button" tabindex="0" onclick="resetDelivery()" onkeydown="if(event.key==='Enter')resetDelivery()">↺ Reset fields</a>
+      </div>
+
+      <!-- RESULT METER -->
+      <div class="result-area" id="result-area" style="display:none">
+        <div class="meter-section" id="meter" role="status" aria-live="polite" aria-label="Calculation result">
+          <div class="meter-header">
+            <div class="meter-status-chip">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span id="meter-label">PENALTY DUE</span>
+            </div>
+            <button class="copy-result" onclick="copyResult()" id="copy-btn" aria-label="Copy calculation summary to clipboard">
+              ⎘ Copy Summary
+            </button>
+          </div>
+          <div class="meter-amount" id="meter-amount" aria-live="polite">$0<small>estimated</small></div>
+          <div class="breach-bar-wrap" role="progressbar" aria-label="Breach severity" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="breach-bar" id="breach-bar"></div>
+          </div>
+          <div class="meter-stats" id="meter-stats"></div>
+        </div>
+        <div class="summary-box" id="summary-box"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ TRUST BANNER ══ -->
+  <div class="trust-banner reveal" role="note" aria-label="Data privacy notice">
+    <div class="trust-icon" aria-hidden="true">🔒</div>
+    <div class="trust-text">
+      <strong>100% Private — Runs Entirely in Your Browser</strong>
+      <p>No data is sent to any server. All calculations happen locally on your device. Nothing is stored or logged.</p>
+    </div>
     <div class="trust-badges" aria-label="Tool features">
       <span class="trust-badge">No Signup</span>
       <span class="trust-badge">No Ads</span>
@@ -1451,19 +1745,49 @@ footer {
   </div>
 
   <!-- ══ SEO CONTENT ══ -->
-  <section class="section reveal" aria-labelledby="seo-heading">
-    <div class="section-eyebrow">About the Tool</div>
-    <h2 id="seo-heading" class="section-title">The Standard SLA Breach Calculator</h2>
+  <style>
+    .seo-guide { padding-top: 40px; }
+    .seo-guide h2 { color: var(--white); font-size: 24px; font-weight: 700; margin-top: 48px; margin-bottom: 16px; letter-spacing: -0.01em; }
+    .seo-guide p { color: var(--slate-300); font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+    .seo-guide ul { color: var(--slate-300); font-size: 16px; line-height: 1.7; margin-bottom: 24px; padding-left: 20px; }
+    .seo-guide li { margin-bottom: 8px; }
+    .seo-guide strong { color: var(--white); font-weight: 600; }
+    .formula-box { background: rgba(15,25,61,0.6); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: var(--radius); margin-bottom: 24px; font-family: monospace; font-size: 15px; color: var(--blue-300); overflow-x: auto; }
+  </style>
+
+  <section class="section reveal seo-guide" aria-labelledby="seo-heading">
+    <div class="section-eyebrow">Comprehensive Guide</div>
+    <h2 id="seo-heading" class="section-title">The Complete Guide to SLA Breaches and Calculations</h2>
     <div class="content-card" style="margin-top: 24px; padding: 32px 40px; background: rgba(15,25,61,0.4);">
-      <p class="body-text">
-        Calculating <strong>SLA breach penalties</strong> manually is a common source of friction between vendors and clients. A Service Level Agreement (SLA) outlines the minimum acceptable standard for services like cloud hosting, SaaS platforms, or managed IT support. When these services fall short—whether through excess downtime, missed response targets, or delayed delivery—the contract typically entitles you to <strong>service credits</strong> or financial compensation.
-      </p>
-      <p class="body-text" style="margin-top: 16px;">
-        This free <strong>SLA Breach Calculator</strong> is designed to remove the guesswork from enforcing your contracts. By inputting your contracted uptime percentage, actual uptime, and standard penalty structures (such as flat rates or tiered percentage caps), the calculator instantly processes the exact financial overage. Whether you are an IT procurement manager calculating downtime credits against an enterprise AWS/Azure contract, or an operations director validating a managed service provider's monthly report, our tool provides a mathematically sound, defensible figure to attach to your formal claim.
-      </p>
-      <p class="body-text" style="margin-top: 16px;">
-        We built this tool to be 100% private and client-side. To learn more about the exact formulas used, check out our guide on <a href="/how-to-calculate-sla-breach-penalties/" style="color: var(--blue-400); text-decoration: none; font-weight: 600;">how to calculate SLA breach penalties</a> or read our <a href="/frequently-asked-questions-about-sla-breaches/" style="color: var(--blue-400); text-decoration: none; font-weight: 600;">SLA Breach FAQ</a>.
-      </p>
+      
+      <h2>What Is an SLA Breach?</h2>
+      <p>A Service Level Agreement (SLA) is a documented contract between a service provider and a client that defines the minimum acceptable standard of service. An <strong>SLA breach</strong> occurs when the provider fails to meet these documented obligations. This can manifest as an application experiencing excessive downtime, a help desk missing its response targets, or a project missing its delivery milestones.</p>
+      <p>When an SLA is violated, the client is typically entitled to financial compensation. Using an <strong>SLA breach calculator</strong> ensures you compute the exact penalty amount or service credits owed without relying on manual, error-prone spreadsheets.</p>
+
+      <h2>How SLA Breach Percentage Is Calculated</h2>
+      <p>Understanding how to <strong>calculate SLA percentage</strong> is crucial for holding vendors accountable. If your contract guarantees 99.9% uptime, but your actual uptime drops to 99.0%, you have a 0.9% shortfall. Many enterprise cloud hosts like AWS and Azure use a tiered penalty system. For example, falling between 99.0% and 99.9% might trigger a 10% invoice credit, while dropping below 95.0% might result in a 100% credit.</p>
+
+      <h2>SLA Compliance Formula</h2>
+      <p>If you are measuring service desk or ticket-based performance, the standard <strong>SLA compliance formula</strong> is:</p>
+      <div class="formula-box">
+        (Number of Incidents Meeting SLA Targets / Total Number of Incidents) × 100 = SLA Compliance %
+      </div>
+      <p>For example, if your team handled 500 tickets and 480 of them were resolved within the agreed timeframe, your SLA compliance rate is 96%. An <strong>SLA compliance calculator</strong> automates this math, allowing you to instantly attach financial penalties to the percentage shortfall.</p>
+
+      <h2>Common SLA Metrics: Uptime, Response, and Resolution</h2>
+      <p>Every <strong>service level agreement calculator</strong> tracks slightly different metrics depending on the industry:</p>
+      <ul>
+        <li><strong>Uptime Calculator:</strong> Measures the total hours of service availability against the contracted percentage. Penalties are often calculated as a percentage of the monthly contract value.</li>
+        <li><strong>SLA Response Time Calculator:</strong> Measures how quickly a support team acknowledges an issue. If the target is 1 hour and the actual time is 4 hours, a flat penalty per ticket or per hour may apply.</li>
+        <li><strong>SLA Resolution Time Calculator:</strong> Measures the total elapsed time until the issue is entirely fixed. This is critical for Priority 1 (P1) system outages.</li>
+      </ul>
+
+      <h2>Response Time vs Resolution Time SLA</h2>
+      <p>It is vital not to confuse these two metrics. The <strong>response time SLA</strong> only measures the time until the first human reply. The <strong>resolution time SLA</strong> measures the time until the underlying problem is solved. A vendor might have perfect response times but terrible resolution times. You should use a <strong>service level agreement penalty calculator</strong> that can track and penalize breaches in both categories independently.</p>
+
+      <h2>SLA Best Practices and Enforcement</h2>
+      <p>Calculating <strong>SLA breach compensation</strong> shouldn't be guesswork. Always ensure your contract specifies the exact penalty formula (flat fee vs. percentage), the liability caps (e.g., penalties cannot exceed 50% of the monthly fee), and the grace periods. Using a dedicated <strong>SLA violation calculator</strong> provides you with a mathematically defensible figure to attach to your formal claims and vendor reviews.</p>
+
     </div>
   </section>
 
