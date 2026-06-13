@@ -669,4 +669,495 @@ generatePage(
     post4Schema
 );
 
+
+// --- POST 5 ---
+const post5Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">ITSM Foundations</div>
+  <h1>What Is an SLA Breach?</h1>
+  <p class="hero-sub">Understanding the meaning, consequences, and financial impact of Service Level Agreement violations.</p>
+</div>
+<div class="blog-content">
+  <p>If you manage IT services or vendor relationships, you've likely heard the term. But exactly <strong>what is an SLA breach</strong>, and what happens when it occurs?</p>
+  
+  <h2>The Breached SLA Meaning</h2>
+  <p>A Service Level Agreement (SLA) is a contract between a service provider and a customer that dictates the minimum acceptable standard of service. An <strong>SLA breach</strong> occurs when the provider fails to meet one or more of these documented standards. This could be an application dropping below its guaranteed 99.9% uptime, a support team taking too long to respond to a critical ticket, or a missed delivery milestone.</p>
+  
+  <h2>Immediate Consequences of an SLA Violation</h2>
+  <p>When an SLA is breached, the contract typically outlines specific remedies for the customer. These are usually financial:</p>
+  <ul>
+    <li><strong>Service Credits:</strong> A discount applied to a future invoice. This is the most common remedy in SaaS and cloud hosting.</li>
+    <li><strong>Penalty Payments:</strong> Direct financial compensation paid to the customer, common in large enterprise or government contracts.</li>
+    <li><strong>Contract Termination:</strong> For severe or chronic breaches, the customer may gain the legal right to terminate the contract entirely without paying an early termination fee.</li>
+  </ul>
+  
+  <h2>How to Identify a Breach</h2>
+  <p>Identifying a breach requires continuous monitoring using <strong>SLA tracking tools</strong> or ITSM platforms. You must compare your actual performance data (like uptime logs or ticket response times) against the targets specified in your contract.</p>
+
+  <div class="cta-card">
+    <h2>Calculate Your Breach Penalties</h2>
+    <p>Has your vendor breached their SLA? Find out exactly what you are owed.</p>
+    <a href="/" class="cta-btn">⚡ Free SLA Breach Calculator →</a>
+  </div>
+</div>`;
+
+const post5Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Is an SLA Breach?",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/what-is-an-sla-breach/index.html'),
+    'What Is an SLA Breach? | SLABreachCalculator.site',
+    'Learn exactly what constitutes an SLA breach, the consequences for service providers, and how to track SLA violations effectively.',
+    '/blog/what-is-an-sla-breach/',
+    post5Content,
+    post5Schema
+);
+
+// --- POST 6 ---
+const post6Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">Metrics & Formulas</div>
+  <h1>SLA Compliance Formula Explained</h1>
+  <p class="hero-sub">How to accurately calculate your SLA compliance percentage for IT and service desks.</p>
+</div>
+<div class="blog-content">
+  <p>To evaluate the performance of your IT service desk or external vendors, you need a mathematically sound way to measure success. This is where the <strong>SLA compliance formula</strong> comes in.</p>
+  
+  <h2>The Basic SLA Compliance Formula</h2>
+  <p>At its core, calculating SLA compliance is about finding the ratio of successful interactions to total interactions. The standard formula is:</p>
+  <pre><code>(Number of Incidents Meeting SLA / Total Number of Incidents) × 100 = SLA Compliance %</code></pre>
+  
+  <p>For example, if your service desk handled 1,000 tickets this month, and 950 of them were resolved within the agreed SLA timeframe, your calculation is:</p>
+  <p><code>(950 / 1000) * 100 = 95% SLA Compliance</code></p>
+  
+  <h2>Uptime SLA Compliance Formula</h2>
+  <p>When measuring system availability, the formula shifts from counting tickets to measuring time. The formula for uptime compliance is:</p>
+  <pre><code>(Total Hours in Period - Downtime Hours) / Total Hours in Period × 100 = Uptime %</code></pre>
+  
+  <h2>Why Automated Calculation Matters</h2>
+  <p>Doing these calculations manually in spreadsheets is prone to human error and difficult to scale. Utilizing dedicated <strong>SLA metrics calculators</strong> ensures accuracy and transparency between providers and clients.</p>
+
+  <div class="cta-card">
+    <h2>Instantly Calculate SLA Penalties</h2>
+    <p>Fell short of your compliance targets? Calculate the financial impact instantly.</p>
+    <a href="/" class="cta-btn">⚡ Use the Free SLA Calculator →</a>
+  </div>
+</div>`;
+
+const post6Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "SLA Compliance Formula Explained",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/sla-compliance-formula-explained/index.html'),
+    'SLA Compliance Formula Explained | SLABreachCalculator.site',
+    'Discover the exact formulas used to compute SLA compliance percentages for help desks, uptime, and service management.',
+    '/blog/sla-compliance-formula-explained/',
+    post6Content,
+    post6Schema
+);
+
+// --- POST 7 ---
+const post7Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">Calculations</div>
+  <h1>How to Calculate SLA Percentage</h1>
+  <p class="hero-sub">A straightforward guide to finding your SLA violation rate and compliance score.</p>
+</div>
+<div class="blog-content">
+  <p>Whether you are an MSP proving your value or a client holding a vendor accountable, knowing <strong>how to calculate SLA percentage</strong> is a mandatory skill.</p>
+
+  <h2>Step 1: Define the SLA Metric</h2>
+  <p>First, identify what you are measuring. Are you calculating an <strong>SLA violation rate</strong> for response times, or an availability percentage for a server? The metric dictates the data you need to gather.</p>
+
+  <h2>Step 2: Gather the Data</h2>
+  <p>If you are calculating a <strong>response time SLA percentage</strong>, pull a report of all tickets created in the period and the time of the first response. If calculating uptime, pull the total minutes of verified downtime.</p>
+
+  <h2>Step 3: Apply the Formula</h2>
+  <p>For help desk tickets:</p>
+  <pre><code>(Tickets meeting SLA / Total Tickets) * 100</code></pre>
+  <p>If you answered 400 out of 500 tickets on time: <code>(400/500) * 100 = 80%</code>.</p>
+  
+  <p>For availability:</p>
+  <pre><code>((Total Minutes - Downtime Minutes) / Total Minutes) * 100</code></pre>
+  <p>In a 30-day month (43,200 minutes) with 120 minutes of downtime: <code>((43,200 - 120) / 43,200) * 100 = 99.72%</code>.</p>
+
+  <h2>Using an SLA Percentage Calculator</h2>
+  <p>To avoid manual math and easily attach financial penalties to these percentages, use an automated tool.</p>
+
+  <div class="cta-card">
+    <h2>Calculate Your Breach Penalties</h2>
+    <p>Convert your SLA percentage shortfall into exact service credits.</p>
+    <a href="/" class="cta-btn">⚡ Free SLA Breach Calculator →</a>
+  </div>
+</div>`;
+
+const post7Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Calculate SLA Percentage",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/how-to-calculate-sla-percentage/index.html'),
+    'How to Calculate SLA Percentage | SLABreachCalculator.site',
+    'A step-by-step guide to calculating your SLA compliance percentage and violation rates for IT service management.',
+    '/blog/how-to-calculate-sla-percentage/',
+    post7Content,
+    post7Schema
+);
+
+// --- POST 8 ---
+const post8Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">ITSM Metrics</div>
+  <h1>Response Time vs Resolution Time SLA</h1>
+  <p class="hero-sub">Understanding the critical differences between the two most important help desk metrics.</p>
+</div>
+<div class="blog-content">
+  <p>In IT Service Management (ITSM), not all SLAs are created equal. The two most commonly tracked—and most frequently confused—metrics are <strong>Response Time SLA</strong> and <strong>Resolution Time SLA</strong>.</p>
+  
+  <h2>What is Response Time SLA?</h2>
+  <p>The Response Time SLA dictates how quickly the support team must acknowledge a user's request. It is the time elapsed between the ticket being created and the first human response being sent to the user. A <strong>response time SLA calculator</strong> evaluates the speed of initial engagement, regardless of whether the issue is actually fixed.</p>
+  
+  <h2>What is Resolution Time SLA?</h2>
+  <p>The Resolution Time SLA dictates the total allowable time to completely solve the user's problem and close the ticket. A <strong>ticket resolution SLA calculator</strong> tracks the entire lifecycle of the incident. This is heavily dependent on the severity of the issue.</p>
+
+  <h2>Why You Need Both</h2>
+  <p>Tracking only response times creates a false sense of security; agents might reply instantly with "we are looking into it" and then take weeks to fix the bug. Conversely, tracking only resolution times frustrates users who are left in the dark wondering if their ticket was even received.</p>
+  <p>Effective service desks use <strong>incident response SLA calculators</strong> to track both metrics simultaneously to ensure both fast communication and swift problem solving.</p>
+
+  <div class="cta-card">
+    <h2>Breached Your Response Time Targets?</h2>
+    <p>Calculate the exact penalty for missed response and resolution SLAs.</p>
+    <a href="/" class="cta-btn">⚡ Use the Free SLA Calculator →</a>
+  </div>
+</div>`;
+
+const post8Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Response Time vs Resolution Time SLA",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/response-time-vs-resolution-time-sla/index.html'),
+    'Response Time vs Resolution Time SLA | SLABreachCalculator.site',
+    'Learn the difference between Response Time SLAs and Resolution Time SLAs, and why your help desk needs to track both.',
+    '/blog/response-time-vs-resolution-time-sla/',
+    post8Content,
+    post8Schema
+);
+
+// --- POST 9 ---
+const post9Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">Service Desk</div>
+  <h1>Service Desk SLA Breach Calculator Guide</h1>
+  <p class="hero-sub">How to track and compute service desk SLA violations and penalties.</p>
+</div>
+<div class="blog-content">
+  <p>For Managed Service Providers (MSPs) and internal IT departments, the service desk is the frontline of SLA enforcement. A <strong>service desk SLA breach calculator</strong> helps you quantify performance failures in monetary terms.</p>
+  
+  <h2>Common Service Desk SLAs</h2>
+  <p>Service desks typically guarantee performance across several dimensions:</p>
+  <ul>
+    <li><strong>First Call Resolution (FCR):</strong> Percentage of issues resolved on the very first contact.</li>
+    <li><strong>Average Handle Time (AHT):</strong> Total time spent resolving a ticket.</li>
+    <li><strong>First Response Time:</strong> Speed of the initial reply.</li>
+  </ul>
+  
+  <h2>Calculating Help Desk Penalties</h2>
+  <p>When using a <strong>help desk SLA calculator</strong> to determine penalties, contracts usually stipulate a "per-ticket" penalty or a broad compliance threshold.</p>
+  <p>For instance, an enterprise IT support contract might state: "If monthly SLA compliance falls below 90%, a 5% service credit applies to the monthly invoice." If your team only hits 88% compliance, the breach is triggered.</p>
+  
+  <h2>Automating Your Metrics</h2>
+  <p>To ensure accuracy, integrate an <strong>ITSM SLA calculator</strong> into your reporting workflow. Tools that hook into Zendesk, Jira, or ServiceNow can automatically flag breached tickets and calculate the aggregate compliance score.</p>
+
+  <div class="cta-card">
+    <h2>Calculate IT Support Penalties</h2>
+    <p>Convert your service desk SLA data into exact financial figures.</p>
+    <a href="/" class="cta-btn">⚡ Free SLA Breach Calculator →</a>
+  </div>
+</div>`;
+
+const post9Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Service Desk SLA Breach Calculator Guide",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/service-desk-sla-breach-calculator-guide/index.html'),
+    'Service Desk SLA Breach Calculator Guide | SLABreachCalculator.site',
+    'Discover how to use a service desk SLA breach calculator to measure support performance and compute financial penalties.',
+    '/blog/service-desk-sla-breach-calculator-guide/',
+    post9Content,
+    post9Schema
+);
+
+// --- POST 10 ---
+const post10Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">Incident Management</div>
+  <h1>Incident Response SLA Calculator Walkthrough</h1>
+  <p class="hero-sub">How to calculate SLA compliance for critical incident response.</p>
+</div>
+<div class="blog-content">
+  <p>When systems go down, every minute counts. Contracts involving high-availability infrastructure heavily emphasize incident response. An <strong>incident response SLA calculator</strong> is a specialized tool used to evaluate how quickly engineering teams react to critical outages.</p>
+  
+  <h2>Priority Levels and SLA Targets</h2>
+  <p>Incident response SLAs are almost always tiered by severity (Priority 1 through Priority 4).</p>
+  <ul>
+    <li><strong>P1 (Critical):</strong> Entire system down. SLA target is often a 15-minute response and 4-hour resolution.</li>
+    <li><strong>P2 (High):</strong> Major feature degraded. 1-hour response.</li>
+    <li><strong>P3/P4 (Normal/Low):</strong> Minor bugs or cosmetic issues. 24-hour response.</li>
+  </ul>
+  
+  <h2>Calculating the Breach</h2>
+  <p>Because the stakes for P1 incidents are so high, the financial penalties for breaching them are severe. A single missed P1 response SLA might trigger a flat $1,000 penalty or a 10% invoice credit immediately.</p>
+  <p>When using an SLA performance calculator for incidents, you must segment the data by priority level. A 99% overall compliance rate is meaningless if the 1% of breached tickets were all P1 system outages.</p>
+
+  <div class="cta-card">
+    <h2>Did Your Provider Miss a P1 SLA?</h2>
+    <p>Calculate exactly how much they owe you in service credits.</p>
+    <a href="/" class="cta-btn">⚡ Use the Free SLA Calculator →</a>
+  </div>
+</div>`;
+
+const post10Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Incident Response SLA Calculator Walkthrough",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/incident-response-sla-calculator-walkthrough/index.html'),
+    'Incident Response SLA Calculator Walkthrough | SLABreachCalculator.site',
+    'A guide to tracking incident response SLAs, categorizing by priority (P1-P4), and calculating penalties for critical outages.',
+    '/blog/incident-response-sla-calculator-walkthrough/',
+    post10Content,
+    post10Schema
+);
+
+// --- POST 11 ---
+const post11Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">Contracts</div>
+  <h1>Types of Breaching Charges in SLAs</h1>
+  <p class="hero-sub">Understanding the different financial penalty structures in Service Level Agreements.</p>
+</div>
+<div class="blog-content">
+  <p>When an SLA is violated, the compensation owed isn't arbitrary—it is calculated based on specific formulas written into the contract. Understanding the different <strong>types of breaching charges</strong> is essential for procurement and vendor management.</p>
+  
+  <h2>1. Tiered Percentage Credits</h2>
+  <p>This is the most common structure for cloud hosts like AWS and Azure. The further below the SLA target the vendor falls, the higher the percentage of the monthly bill is credited.</p>
+  <ul>
+    <li>99.0% – 99.9% uptime = 10% credit</li>
+    <li>95.0% – 99.0% uptime = 25% credit</li>
+    <li>Below 95.0% = 100% credit</li>
+  </ul>
+  
+  <h2>2. Flat Rate Per Hour</h2>
+  <p>Often seen in custom enterprise contracts, this structure charges a fixed dollar amount for every hour the SLA is breached. For example, $500 for every hour of downtime exceeding the allowed limit.</p>
+  
+  <h2>3. Per-Ticket Penalties</h2>
+  <p>Common in help desk contracts, the provider is charged a flat fee (e.g., $50) for every single ticket that breaches the response or resolution SLA.</p>
+  
+  <h2>4. Liability Caps</h2>
+  <p>Almost all contracts include a cap. Even if a vendor is down for two straight weeks, they generally cap total service credits at 100% of that month's invoice.</p>
+
+  <div class="cta-card">
+    <h2>Calculate Your Exact Charges</h2>
+    <p>Input your contract's penalty structure and get precise compensation figures.</p>
+    <a href="/" class="cta-btn">⚡ Free SLA Breach Calculator →</a>
+  </div>
+</div>`;
+
+const post11Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Types of Breaching Charges in SLAs",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/types-of-breaching-charges-in-slas/index.html'),
+    'Types of Breaching Charges in SLAs | SLABreachCalculator.site',
+    'Learn about the different types of breaching charges, service credits, and financial penalty structures in IT SLAs.',
+    '/blog/types-of-breaching-charges-in-slas/',
+    post11Content,
+    post11Schema
+);
+
+// --- POST 12 ---
+const post12Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">Definitions</div>
+  <h1>Breached SLA Meaning in ITSM</h1>
+  <p class="hero-sub">Defining what it means when an SLA is breached in IT Service Management.</p>
+</div>
+<div class="blog-content">
+  <p>In the world of IT Service Management (ITSM), the <strong>breached SLA meaning</strong> carries significant weight. It is not just a missed target; it is a contractual failure that often requires formal incident reports and financial restitution.</p>
+  
+  <h2>The ITIL Definition of a Breach</h2>
+  <p>Under the ITIL framework, a Service Level Agreement defines the acceptable level of service. A breach means the actual service delivered dropped below this documented threshold. This triggers an exception process.</p>
+  
+  <h2>Why Do SLAs Breach?</h2>
+  <p>Breaches in ITSM usually stem from:</p>
+  <ul>
+    <li><strong>Resource constraints:</strong> Not enough help desk agents to handle ticket volume.</li>
+    <li><strong>Technical failures:</strong> Infrastructure outages causing massive downtime.</li>
+    <li><strong>Poor routing:</strong> Tickets sitting in the wrong queue while the SLA timer ticks down.</li>
+  </ul>
+  
+  <h2>Reporting a Breach</h2>
+  <p>When tracking your SLA metrics calculator dashboard, a breached ticket usually turns red. The service desk manager must then perform a root cause analysis to explain to the client why the <strong>SLA was violated</strong> and how it will be prevented in the future.</p>
+
+  <div class="cta-card">
+    <h2>Translate Breaches into Dollars</h2>
+    <p>Did an ITSM breach cost you? Calculate the exact service credit owed.</p>
+    <a href="/" class="cta-btn">⚡ Free SLA Breach Calculator →</a>
+  </div>
+</div>`;
+
+const post12Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Breached SLA Meaning in ITSM",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/breached-sla-meaning-in-itsm/index.html'),
+    'Breached SLA Meaning in ITSM | SLABreachCalculator.site',
+    'Understand the breached SLA meaning in ITIL and ITSM, why breaches occur, and how service desks handle violations.',
+    '/blog/breached-sla-meaning-in-itsm/',
+    post12Content,
+    post12Schema
+);
+
+// --- POST 13 ---
+const post13Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">Tools & Reporting</div>
+  <h1>How to Compute SLA Compliance: Excel vs Tools</h1>
+  <p class="hero-sub">Comparing manual SLA calculation methods with automated SLA tracking tools.</p>
+</div>
+<div class="blog-content">
+  <p>If you are wondering <strong>how to compute SLA</strong> compliance, you generally have two choices: manual spreadsheet calculations or automated software tools.</p>
+  
+  <h2>Computing SLA in Excel</h2>
+  <p>Many smaller teams start by exporting ticket data to Excel. To calculate the <strong>SLA compliance percentage</strong>, they use formulas to compare the ticket creation time against the first response time. </p>
+  <p><strong>The Problem:</strong> Excel doesn't easily account for complex variables like "business hours only" (e.g., stopping the SLA timer at 5 PM on Friday and resuming at 9 AM on Monday). Calculating this manually is a nightmare.</p>
+  
+  <h2>Using Automated SLA Tracking Tools</h2>
+  <p>Modern service desks use built-in <strong>SLA management software</strong>. Tools like an ITSM SLA calculator natively understand business hours, public holidays, and pause conditions (like waiting on a customer response).</p>
+  
+  <h2>Calculating Penalties</h2>
+  <p>While ITSM tools show you the compliance percentage, they rarely calculate the financial penalty. For that, you need a specialized financial tool to map the technical failure to the contract's penalty clauses.</p>
+
+  <div class="cta-card">
+    <h2>Compute Financial Penalties Instantly</h2>
+    <p>Take your compliance percentage and instantly turn it into a penalty figure.</p>
+    <a href="/" class="cta-btn">⚡ Free SLA Breach Calculator →</a>
+  </div>
+</div>`;
+
+const post13Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Compute SLA Compliance: Excel vs Tools",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/how-to-compute-sla-compliance-excel-vs-tools/index.html'),
+    'How to Compute SLA Compliance: Excel vs Tools | SLABreachCalculator.site',
+    'Compare manual Excel formulas with automated ITSM tools for computing SLA compliance and tracking breach percentages.',
+    '/blog/how-to-compute-sla-compliance-excel-vs-tools/',
+    post13Content,
+    post13Schema
+);
+
+// --- POST 14 ---
+const post14Content = `
+<div class="blog-hero">
+  <div class="hero-eyebrow">Platform Integrations</div>
+  <h1>SLA Breach Zendesk: Tracking and Calculation</h1>
+  <p class="hero-sub">How to configure, track, and calculate SLA breaches within Zendesk.</p>
+</div>
+<div class="blog-content">
+  <p>If you use Zendesk for customer support, configuring your SLAs correctly is crucial. An <strong>SLA breach in Zendesk</strong> directly impacts your team's metrics and potentially your company's revenue.</p>
+  
+  <h2>Setting Up SLAs in Zendesk</h2>
+  <p>Zendesk allows you to set complex SLA policies based on ticket priority and conditions. You can define targets for:</p>
+  <ul>
+    <li>First reply time</li>
+    <li>Next reply time</li>
+    <li>Periodic update time</li>
+    <li>Requester wait time</li>
+    <li>Agent work time</li>
+  </ul>
+  
+  <h2>Monitoring a Zendesk SLA Breach</h2>
+  <p>When a ticket approaches its target, Zendesk can highlight it. If the target is missed, the ticket is flagged with an <strong>SLA breach Zendesk</strong> tag. You can build Explore dashboards to track your overall <strong>Zendesk SLA calculator</strong> metrics.</p>
+  
+  <h2>Translating Zendesk Breaches to Client Penalties</h2>
+  <p>Zendesk is excellent at tracking the time, but it does not calculate financial penalties for B2B contracts. If you provide B2B support and owe a client money for breaching your Zendesk SLAs, you must export the breached ticket count and apply your contract's penalty formula.</p>
+
+  <div class="cta-card">
+    <h2>Calculate Your Zendesk Penalties</h2>
+    <p>Export your breached Zendesk tickets and calculate the exact financial credit owed to your clients.</p>
+    <a href="/" class="cta-btn">⚡ Free SLA Breach Calculator →</a>
+  </div>
+</div>`;
+
+const post14Schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "SLA Breach Zendesk: Tracking and Calculation",
+  "datePublished": "2026-06-13T00:00:00Z",
+  "author": { "@type": "Person", "name": "Abu Sufyan" },
+  "publisher": { "@type": "Organization", "name": "SLABreachCalculator.site", "url": "https://slabreachcalculator.site" }
+}, null, 2);
+
+generatePage(
+    path.join(__dirname, 'blog/sla-breach-zendesk-tracking-and-calculation/index.html'),
+    'SLA Breach Zendesk: Tracking and Calculation | SLABreachCalculator.site',
+    'A guide to setting up SLA policies in Zendesk, tracking breaches, and computing the financial penalties for B2B client contracts.',
+    '/blog/sla-breach-zendesk-tracking-and-calculation/',
+    post14Content,
+    post14Schema
+);
+
 console.log("All blog pages generated.");
