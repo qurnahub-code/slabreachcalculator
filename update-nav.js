@@ -3,7 +3,7 @@ const path = require('path');
 
 const dir = 'd:/Github/Portfolio/SLA breach calculator';
 
-const navLinksTemplate = `  <nav class="nav-links" aria-label="Site navigation" style="flex-wrap: wrap; justify-content: flex-end;">
+const navLinksTemplate = `  <nav class="nav-links" id="navMenu" aria-label="Site navigation" style="flex-wrap: wrap; justify-content: flex-end;">
     <a href="/" class="nav-link{CALC_ACTIVE}">Calculator</a>
     <a href="/how-to-calculate-sla-breach-penalties/" class="nav-link{HOW_ACTIVE}">How It Works</a>
     <a href="/who-uses-sla-breach-calculators/" class="nav-link{USES_ACTIVE}">Use Cases</a>

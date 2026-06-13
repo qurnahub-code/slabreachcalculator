@@ -8,7 +8,10 @@ const headerTemplate = `<header role="banner" style="flex-wrap: wrap;">
     <div class="logo-icon" aria-hidden="true">⚡</div>
     SLABreach<span>Calculator</span>.site
   </a>
-  <nav class="nav-links" aria-label="Site navigation" style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end;">
+  <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+  </button>
+  <nav class="nav-links" id="navMenu" aria-label="Site navigation" style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end;">
     <a href="/" class="nav-link{CALC_ACTIVE}">Calculator</a>
     <a href="/how-to-calculate-sla-breach-penalties/" class="nav-link{HOW_ACTIVE}">How It Works</a>
     <a href="/who-uses-sla-breach-calculators/" class="nav-link{USES_ACTIVE}">Use Cases</a>
