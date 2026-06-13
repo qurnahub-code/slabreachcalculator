@@ -15,6 +15,7 @@ const headerTemplate = `<header role="banner" style="flex-wrap: wrap;">
     <a href="/" class="nav-link{CALC_ACTIVE}">Calculator</a>
     <a href="/how-to-calculate-sla-breach-penalties/" class="nav-link{HOW_ACTIVE}">How It Works</a>
     <a href="/who-uses-sla-breach-calculators/" class="nav-link{USES_ACTIVE}">Use Cases</a>
+    <a href="/blog/" class="nav-link{BLOG_ACTIVE}">Blog</a>
     <a href="/frequently-asked-questions-about-sla-breaches/" class="nav-link{FAQ_ACTIVE}">FAQ</a>
     <a href="/about/" class="nav-link{ABOUT_ACTIVE}">About</a>
     <a href="/contact/" class="nav-link{CONTACT_ACTIVE}">Contact</a>
@@ -49,6 +50,7 @@ walk(dir, (filePath) => {
     let faqActive = '';
     let aboutActive = '';
     let contactActive = '';
+    let blogActive = '';
     
     if (filePath.replace(/\\/g, '/').endsWith('/SLA breach calculator/index.html')) {
         calcActive = ' active';
@@ -62,12 +64,15 @@ walk(dir, (filePath) => {
         aboutActive = ' active';
     } else if (filePath.includes('contact')) {
         contactActive = ' active';
+    } else if (filePath.includes('blog')) {
+        blogActive = ' active';
     }
     
     let newHeader = headerTemplate
         .replace('{CALC_ACTIVE}', calcActive)
         .replace('{HOW_ACTIVE}', howActive)
         .replace('{USES_ACTIVE}', usesActive)
+        .replace('{BLOG_ACTIVE}', blogActive)
         .replace('{FAQ_ACTIVE}', faqActive)
         .replace('{ABOUT_ACTIVE}', aboutActive)
         .replace('{CONTACT_ACTIVE}', contactActive);
