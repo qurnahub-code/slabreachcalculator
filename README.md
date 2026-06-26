@@ -1,34 +1,18 @@
-﻿# SLA Breach Calculator
+# SLA Breach Calculator
 
-A free, privacy-first SLA breach penalty calculator built for IT managers, procurement teams, and operations professionals.
+A fast, client-side calculator ecosystem for estimating Service Level Agreement breaches.
 
-**Live site:** https://slabreachcalculator.site
+## 🚀 V2.0 Architecture Compliant
 
-## Features
+> **HQ Agent V2.0 Compliant:** This repository adheres to the Netizen Labs Ultimate Master Blueprint. It utilizes Architectural Asymmetry (Anti-Template Protocol), autonomous Daily Publisher bots, AIO Schema Blueprinting, and Emil Design Eng micro-interactions.
 
-- **Uptime / Availability** — calculates excess downtime hours, applies flat/percentage/tiered penalties, enforces credit caps
-- **Response Time** — multi-incident penalty calculation with per-incident rates and max caps
-- **Delivery / Milestone** — late delivery penalties by day, week, flat fee, or contract %, with grace period support
-- 5 currencies: USD, EUR, GBP, INR, CAD
-- 100% client-side — no data ever leaves your browser
-- Full SEO, Open Graph, JSON-LD structured data
+## 🤖 Bot Ecosystem Active
+- **Daily Publisher:** Sweeps `content/drafts/` daily to deploy new articles.
+- **Self-Healer:** Runs typechecking and Vite builds on every commit. Auto-heals via Git rollback if failed.
 
-## Pages
+## Development
 
-| Page | Description |
-|------|-------------|
-| index.html | Main SLA breach calculator |
-| about.html | About the tool |
-| privacy.html | Privacy policy |
-| terms.html | Terms of use |
-| contact.html | Contact form |
-
-## Tech Stack
-
-- Vanilla HTML, CSS, JavaScript — no frameworks, no dependencies
-- Google Fonts (Inter + IBM Plex Mono)
-- JSON-LD Schema.org structured data (WebApplication, FAQPage, BreadcrumbList)
-
-## License
-
-Free to use. Not legal advice. Always verify results against your contract language.
+```bash
+npm install
+npm run dev
+```
