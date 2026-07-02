@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = 'd:/Github/Portfolio/SLA breach calculator';
+const dir = __dirname;
 
 const footerTemplate = `<footer role="contentinfo">
   <div class="footer-logo">SLABreach<span>Calculator</span>.site</div>
@@ -22,7 +22,18 @@ const footerTemplate = `<footer role="contentinfo">
     <span class="footer-sep" aria-hidden="true">·</span>
     <a href="/contact/">Contact</a>
   </div>
-  <p class="footer-note">Free SLA Breach Calculator — Not legal advice · Results are estimates based on your inputs · Always verify against your contract language</p>
+  <div class="footer-network" style="margin-top: 15px; font-size: 13px; opacity: 0.8; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; color: var(--text-muted, #8B949E);">
+    <span>Network:</span>
+    <a href="https://wtkpro.site" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">WebToolkit Pro</a> · 
+    <a href="https://tradeconvert.pro" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">TradeConvert</a> · 
+    <a href="https://www.severancecalculator.xyz" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Severance Pay</a> · 
+    <a href="https://abusufyan.xyz" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Abu Sufyan Portfolio</a> · 
+    <a href="https://netizenlabs.online" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Netizen Labs</a> · 
+    <a href="https://getstudynova.online" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">StudyNova</a> · 
+    <a href="https://quranhub.xyz" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">QuranHub</a> · 
+    <a href="https://taxforfreelancers.online" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Freelance Tax</a>
+  </div>
+  <p class="footer-note" style="margin-top: 15px;">Free SLA Breach Calculator — Not legal advice · Results are estimates based on your inputs · Always verify against your contract language</p>
 </footer>`;
 
 function walk(dirPath, callback) {
